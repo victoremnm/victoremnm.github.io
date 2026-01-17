@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allWork = (await getCollection('work'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Work" description="A collection of projects and work">
+  <div class="mx-auto max-w-4xl px-6 py-16">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Work</h1>
+    <p class="text-xl text-gray-600 mb-12">
+      A selection of projects I've worked on. From side projects to professional work.
+    </p>
+
+    {allWork.length > 0 ? (
+      <div class="grid gap-6 md:grid-cols-2">
+        {allWork.map((project) => (
+          <a
+            href={`/work/${project.slug}`}
+            class="group block p-6 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all"
+          >
+            {project.data.image && (
+              <img
+                src={project.data.image}
+                alt={project.data.title}
+                class="w-full h-40 object-cover rounded-lg mb-4"
+              />
+            )}
+            <div class="flex items-center gap-2 mb-2">
+              {project.data.featured && (
+                <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs font-medium">
+                  Featured
+                </span>
+              )}
+              <time class="text-sm text-gray-500">
+                {project.data.date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                })}
+              </time>
+            </div>
+            <h2 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+              {project.data.title}
+            </h2>
+            <p class="mt-2 text-gray-600 text-sm">
+              {project.data.description}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.data.tags.slice(0, 4).map((tag) => (
+                <span class="px-2 py-1 bg-gray-50 text-gray-500 rounded text-xs">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-500">No projects yet. Check back soon!</p>
+    )}
+  </div>
+</BaseLayout>

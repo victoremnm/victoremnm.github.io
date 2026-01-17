@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const featuredWork = await getCollection('work', ({ data }) => data.featured);
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Home">
+  <Hero
+    title="Hi, I'm Victor."
+    subtitle="I build things and help people grow. Welcome to my corner of the internet where I share my work, thoughts, and coaching practice."
+  >
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/work"
+        class="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+      >
+        View my work
+      </a>
+      <a
+        href="/contact"
+        class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:border-gray-400 transition-colors"
+      >
+        Get in touch
+      </a>
+    </div>
+  </Hero>
+
+  {featuredWork.length > 0 && (
+    <section class="mx-auto max-w-4xl px-6 pb-16">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-8">Featured Work</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        {featuredWork.map((project) => (
+          <a
+            href={`/work/${project.slug}`}
+            class="group block p-6 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all"
+          >
+            <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+              {project.data.title}
+            </h3>
+            <p class="mt-2 text-gray-600 text-sm">
+              {project.data.description}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.data.tags.slice(0, 3).map((tag) => (
+                <span class="px-2 py-1 bg-gray-50 text-gray-500 rounded text-xs">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href="/work" class="text-blue-600 hover:underline">
+          View all work &rarr;
+        </a>
+      </div>
+    </section>
+  )}
+
+  {recentPosts.length > 0 && (
+    <section class="mx-auto max-w-4xl px-6 pb-24">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-8">Recent Writing</h2>
+      <div class="space-y-6">
+        {recentPosts.map((post) => (
+          <a
+            href={`/blog/${post.slug}`}
+            class="group block p-6 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all"
+          >
+            <div class="flex items-center gap-3 text-sm text-gray-500 mb-2">
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+            </div>
+            <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+              {post.data.title}
+            </h3>
+            <p class="mt-2 text-gray-600 text-sm">
+              {post.data.description}
+            </p>
+          </a>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href="/blog" class="text-blue-600 hover:underline">
+          Read all posts &rarr;
+        </a>
+      </div>
+    </section>
+  )}
+</BaseLayout>
