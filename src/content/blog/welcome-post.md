@@ -22,6 +22,6 @@ I'll be covering topics like:
 
 ## Let's Connect
 
-If something resonates with you, I'd love to hear about it. Reach out on [Twitter](https://twitter.com/victorem) or [email me](mailto:hello@victorem.me).
+If something resonates with you, I'd love to hear about it. [Email me](mailto:victorem@alumni.stanford.edu) or [subscribe on Substack](https://victoremnm.substack.com).
 
 Thanks for reading!
