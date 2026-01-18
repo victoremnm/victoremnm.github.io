@@ -21,6 +21,36 @@ We can effectively monitor user behavior by defining clear user states and estab
 - Formulation of targeted re-engagement strategies
 - Consistent segmentation across time periods (daily L1D, weekly L7D, monthly L30D)
 
+```mermaid
+flowchart TB
+    subgraph Inflows["Inflows to Active Users"]
+        NEW[New Users]
+        RES[Resurrected Users]
+    end
+
+    subgraph Current["Current Period MAU"]
+        ACTIVE[Active Users<br/>Retained + New + Resurrected]
+    end
+
+    subgraph Outflows["Outflows from Active"]
+        CHURNED[Churned Users]
+        DORMANT[Dormant Users]
+    end
+
+    NEW -->|Activation| ACTIVE
+    RES -->|Reactivation| ACTIVE
+    ACTIVE -->|Retention| ACTIVE
+    ACTIVE -->|Churn| CHURNED
+    CHURNED -->|No activity| DORMANT
+    DORMANT -->|Resurrection| RES
+
+    style NEW fill:#4ade80
+    style RES fill:#60a5fa
+    style ACTIVE fill:#fbbf24
+    style CHURNED fill:#f87171
+    style DORMANT fill:#9ca3af
+```
+
 ---
 
 ## Simplified vs. Granular Approaches
@@ -49,26 +79,24 @@ We can effectively monitor user behavior by defining clear user states and estab
 
 ## State Transition Flow
 
-```
-User first active (t-1 = NULL, t=1)
-            ↓
-          [New]
-            ↓
-    Stays active (t-1=1, t=1)
-            ↓
-         [Active] ←──────────────────┐
-            ↓                        │
-    No activity (t-1=1, t=0)         │
-            ↓                        │
-        [Churned]                    │
-            ↓                        │
-    No activity (t-1=0, t=0)    Maintains activity
-            ↓                   (t-1=1, t=1)
-        [Dormant]                    │
-            ↓                        │
-    Becomes active (t-1=0, t=1)      │
-            ↓                        │
-      [Resurrected] ─────────────────┘
+```mermaid
+stateDiagram-v2
+    [*] --> New: First activity (t-1=NULL, t=1)
+
+    New --> Active: Stays active (t-1=1, t=1)
+    New --> Churned: No activity next period (t-1=1, t=0)
+
+    Active --> Active: Maintains activity (t-1=1, t=1)
+    Active --> Churned: No activity (t-1=1, t=0)
+
+    Churned --> Dormant: No activity (t-1=0, t=0)
+    Churned --> Resurrected: Becomes active (t-1=0, t=1)
+
+    Dormant --> Dormant: Still inactive (t-1=0, t=0)
+    Dormant --> Resurrected: Becomes active (t-1=0, t=1)
+
+    Resurrected --> Active: Stays active (t-1=1, t=1)
+    Resurrected --> Churned: No activity (t-1=1, t=0)
 ```
 
 ---
@@ -133,30 +161,32 @@ The common pattern is a **cumulative/snapshot table** containing state transitio
 
 ## Schema Design
 
-```
-┌─────────────────────┐
-│     DIM_USERS       │
-├─────────────────────┤
-│ user_id (PK)        │
-│ signup_date         │
-│ last_activity_date  │
-│ is_active           │
-│ current_state       │
-└─────────────────────┘
-         │
-    performs / has
-         │
-    ┌────┴────┐
-    ↓         ↓
-┌─────────────────┐  ┌──────────────────────────┐
-│ FACT_USER_      │  │ SNP_USER_STATE_          │
-│ ACTIVITY        │  │ TRANSITIONS              │
-├─────────────────┤  ├──────────────────────────┤
-│ activity_id (PK)│  │ user_id (FK)             │
-│ user_id (FK)    │  │ transition_date          │
-│ activity_date   │  │ previous_state           │
-│ activity_type   │  │ current_state            │
-└─────────────────┘  └──────────────────────────┘
+```mermaid
+erDiagram
+    DIM_USERS {
+        string user_id PK
+        date signup_date
+        date last_activity_date
+        boolean is_active
+        string current_state
+    }
+
+    FACT_USER_ACTIVITY {
+        string activity_id PK
+        string user_id FK
+        date activity_date
+        string activity_type
+    }
+
+    SNP_USER_STATE_TRANSITIONS {
+        string user_id FK
+        date transition_date
+        string previous_state
+        string current_state
+    }
+
+    DIM_USERS ||--o{ FACT_USER_ACTIVITY : "performs"
+    DIM_USERS ||--o{ SNP_USER_STATE_TRANSITIONS : "has"
 ```
 
 ---
@@ -176,6 +206,29 @@ The common pattern is a **cumulative/snapshot table** containing state transitio
 
 ### Building the Snapshot Table
 
+```mermaid
+flowchart LR
+    subgraph Input
+        Y[Yesterday's Snapshot]
+        T[Today's Activity]
+    end
+
+    subgraph Processing
+        J[FULL OUTER JOIN<br/>on user_id]
+        C[COALESCE IDs<br/>Calculate cumulative metrics<br/>Combine arrays]
+    end
+
+    subgraph Output
+        O[Cumulated<br/>Snapshot]
+    end
+
+    Y --> J
+    T --> J
+    J --> C
+    C --> O
+```
+
+**Steps:**
 1. Get yesterday's data + today's data
 2. Apply FULL OUTER JOIN on user_id (or choice grain)
 3. COALESCE IDs and calculate cumulative metrics
