@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allResources = (await getCollection('resources', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Resources" description="Technical guides and reference material">
+  <div class="mx-auto max-w-[900px] px-6 py-16">
+    <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-4">Resources</h1>
+    <p class="text-lg text-[#888888] mb-12">
+      Technical guides, frameworks, and reference material.
+    </p>
+
+    {allResources.length > 0 ? (
+      <div class="space-y-3">
+        {allResources.map((resource) => (
+          <a href={`/resources/${resource.slug}`} class="card card-accent block p-5 group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex-1 min-w-0">
+                <h2 class="text-base font-medium text-[#f0f0f0] group-hover:text-[#60A5FA] transition-colors">
+                  {resource.data.title}
+                </h2>
+                <p class="mt-1 text-sm text-[#555555] line-clamp-1">
+                  {resource.data.description}
+                </p>
+              </div>
+              <div class="flex gap-2">
+                {resource.data.tags.slice(0, 2).map((tag) => (
+                  <span class="text-xs font-mono text-[#555555]">#{tag}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="text-[#555555]">No resources yet.</p>
+    )}
+  </div>
+</BaseLayout>
