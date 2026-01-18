@@ -43,12 +43,6 @@ flowchart TB
     ACTIVE -->|Churn| CHURNED
     CHURNED -->|No activity| DORMANT
     DORMANT -->|Resurrection| RES
-
-    style NEW fill:#4ade80
-    style RES fill:#60a5fa
-    style ACTIVE fill:#fbbf24
-    style CHURNED fill:#f87171
-    style DORMANT fill:#9ca3af
 ```
 
 ---
