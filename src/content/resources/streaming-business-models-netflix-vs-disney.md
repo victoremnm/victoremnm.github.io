@@ -56,37 +56,23 @@ Note the massive ARPU difference between live TV bundles ($59.47) and standalone
 
 ### Subscription State Tracking
 
-Building subscription states requires careful thinking:
+Subscription states are more nuanced than "active" or "cancelled." You need to track:
 
-**Flag Fields (Boolean):**
-- is_entitled
-- has_ever_paid
-- is_voluntary_cancelled
-- is_involuntary_cancelled
-- is_in_free_trial_period
-- is_pending_involuntary_cancellation
-- is_pending_voluntary_cancellation
+- **Entitlement status** — can they access content right now?
+- **Payment history** — have they ever paid vs. always free trial?
+- **Cancellation type** — voluntary (user chose to leave) vs. involuntary (payment failed)
+- **Pending states** — grace periods before full cancellation
 
-**Derived States:**
-- Churned: `is_cancelled = 1`
-- Paid Hold: `is_pending_involuntary_cancellation = 1 AND has_ever_paid = 1`
+This allows you to derive actionable segments like "at-risk paid subscribers" or "trial users likely to convert."
 
 ### The Multi-Platform Challenge
 
-At Disney, we faced:
-- Glimpse instrumented on D+ only
-- Adobe instrumented on E+ and ESPN
-- Two different fact tables for different platforms
-- Need for conformed transaction/payment tables
+Streaming companies often have multiple apps with different instrumentation:
+- Different analytics SDKs per platform
+- Separate event schemas that need unification
+- Conformed dimension tables to join across platforms
 
-### Event Stream Processing
-
-Typical flow:
-1. Ingest event stream → Parse JSON → Add partitions
-2. Store to S3 with composite key (Store, Receipt, Type, Date)
-3. Enrich and calculate: filter, deserialize, join for start dates, apply SKU dictionary
-4. Calculate states via subscription API logic
-5. Load to Snowflake for analytics
+The key is building a **unified identity layer** that maps users across all touchpoints.
 
 ## Key Metrics to Track
 

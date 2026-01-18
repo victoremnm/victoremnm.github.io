@@ -15,8 +15,8 @@ Many engineers create surrogate keys like this: take a natural key (say, an emai
 The problem: what happens when your natural key changes or you need to link multiple natural keys to the same entity?
 
 Consider a user who:
-- Signs up with `vaibhav.jajoo@disney.com`
-- Later uses `vaibhav.jajoo@disneystreaming.com`
+- Signs up with `john.smith@disney.com`
+- Later uses `john.smith@disneystreaming.com`
 - Also has a SWID (software ID) of `101`
 
 These are all the same person. Your surrogate key needs to handle this.
@@ -30,9 +30,9 @@ Instead of deriving a surrogate key from a natural key, create a **mapping table
 
 | Surrogate Key | Email (NK) | SWID (NK) |
 | --- | --- | --- |
-| 1 | vaibhav.jajoo@disney.com | NULL |
+| 1 | john.smith@disney.com | NULL |
 | 1 | NULL | 101 |
-| 1 | vaibhav.jajoo@disneystreaming.com | 101 |
+| 1 | john.smith@disneystreaming.com | 101 |
 
 This approach gives you:
 - **Ownership** of the surrogate key lifecycle
@@ -77,8 +77,8 @@ WHERE ds = '2020-06-01'
 
 -- Returns all natural keys that map to entity #1
 -- ds          | surrogate_key | natural_key_email
--- 2020-06-01  | 1             | vaibhav.jajoo@disney.com
--- 2020-06-01  | 1             | vaibhav.jajoo@disneystreaming.com
+-- 2020-06-01  | 1             | john.smith@disney.com
+-- 2020-06-01  | 1             | john.smith@disneystreaming.com
 ```
 
 ## The Bottom Line
