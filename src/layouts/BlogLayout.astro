@@ -17,35 +17,35 @@ const formattedDate = date.toLocaleDateString('en-US', {
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="mx-auto max-w-3xl px-6 py-16">
+  <article class="mx-auto max-w-[900px] px-6 py-16">
     <header class="mb-12">
-      <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
-        <time datetime={date.toISOString()}>{formattedDate}</time>
+      <div class="flex items-center gap-3 text-sm text-[#555555] mb-4">
+        <time datetime={date.toISOString()} class="font-mono">{formattedDate}</time>
         {tags.length > 0 && (
           <>
             <span>·</span>
             <div class="flex gap-2">
               {tags.map((tag) => (
-                <span class="text-gray-400">#{tag}</span>
+                <span class="text-[#555555]">#{tag}</span>
               ))}
             </div>
           </>
         )}
       </div>
-      <h1 class="text-4xl font-bold text-gray-900 leading-tight">
+      <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] leading-tight">
         {title}
       </h1>
       {description && (
-        <p class="mt-4 text-xl text-gray-600">
+        <p class="mt-4 text-lg text-[#888888]">
           {description}
         </p>
       )}
     </header>
-    <div class="prose prose-gray max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+    <div class="prose prose-invert max-w-none prose-headings:font-light prose-headings:tracking-tight prose-a:text-[#60A5FA] prose-a:no-underline hover:prose-a:underline prose-code:text-[#60A5FA] prose-pre:bg-[#141414] prose-pre:border prose-pre:border-[#222222]">
       <slot />
     </div>
-    <footer class="mt-16 pt-8 border-t border-gray-100">
-      <a href="/blog" class="text-blue-600 hover:underline">
+    <footer class="mt-16 pt-8 border-t border-[#222222]">
+      <a href="/blog" class="text-[#60A5FA] hover:opacity-80 transition-opacity">
         &larr; Back to all posts
       </a>
     </footer>

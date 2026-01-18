@@ -3,59 +3,64 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About" description="Learn more about Victor and his background">
-  <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">About</h1>
+  <div class="mx-auto max-w-[900px] px-6 py-16">
+    <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-8">About</h1>
 
-    <div class="prose prose-gray max-w-none">
-      <p class="text-xl text-gray-600 mb-8">
+    <div class="space-y-12">
+      <p class="text-xl text-[#888888] leading-relaxed">
         I'm Victor — an engineering manager and data infrastructure builder based in Mountain View.
       </p>
 
-      <h2>What I Do</h2>
-      <p>
-        I lead teams that build real-time data systems at scale. Currently, I'm managing
-        data infrastructure at a crypto startup, designing systems that process 400+
-        trades per second with sub-30ms latency.
-      </p>
-      <p>
-        Previously, I built ML platforms at SiriusXM, privacy measurement systems at Meta,
-        and helped launch Disney+ as a data engineering lead. I started my career as a
-        data analyst at Foursquare, where I cut my teeth on location intelligence and
-        product analytics.
-      </p>
+      <section>
+        <h2 class="section-header">What I Do</h2>
+        <div class="space-y-4 text-[#888888] leading-relaxed">
+          <p>
+            I lead teams that build real-time data systems at scale. Currently, I'm managing
+            data infrastructure at a crypto startup, designing systems that process
+            <span class="text-[#60A5FA] font-mono">400+ trades/second</span> with
+            <span class="text-[#60A5FA] font-mono">&lt;30ms</span> latency.
+          </p>
+          <p>
+            Previously, I built ML platforms at SiriusXM, privacy measurement systems at Meta,
+            and helped launch Disney+ as a data engineering lead. I started my career as a
+            data analyst at Foursquare, where I cut my teeth on location intelligence and
+            product analytics.
+          </p>
+        </div>
+      </section>
 
-      <h2>Beyond Work</h2>
-      <p>
-        I'm a trustee of a 501(c)(3) that provides scholarships to college students.
-        We've raised over $200K and serve students across 60+ universities.
-      </p>
+      <section>
+        <h2 class="section-header">Beyond Work</h2>
+        <p class="text-[#888888] leading-relaxed">
+          I'm a trustee of a 501(c)(3) that provides scholarships to college students.
+          We've raised over <span class="text-[#60A5FA] font-mono">$200K</span> and serve
+          students across <span class="text-[#60A5FA] font-mono">60+</span> universities.
+        </p>
+      </section>
 
-      <h2>Background</h2>
-      <p>
-        I studied at Stanford, trained BJJ, and believe the best systems are built
-        by people who care about the humans using them.
-      </p>
+      <section>
+        <h2 class="section-header">Background</h2>
+        <p class="text-[#888888] leading-relaxed">
+          I studied at Stanford, trained BJJ, and believe the best systems are built
+          by people who care about the humans using them.
+        </p>
+      </section>
 
-      <h2>When I'm Not Working</h2>
-      <p>
-        You'll find me exploring the Bay Area, on the mats, or writing about what I'm learning.
-      </p>
-    </div>
+      <section>
+        <h2 class="section-header">When I'm Not Working</h2>
+        <p class="text-[#888888] leading-relaxed">
+          You'll find me exploring the Bay Area, on the mats, or writing about what I'm learning.
+        </p>
+      </section>
 
-    <div class="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row gap-4">
-      <a
-        href="/contact"
-        class="inline-block px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors text-center"
-      >
-        Get in touch
-      </a>
-      <a
-        href="/resume.pdf"
-        target="_blank"
-        class="inline-block px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors text-center"
-      >
-        Download Resume
-      </a>
+      <div class="pt-8 border-t border-[#222222] flex flex-col sm:flex-row gap-4">
+        <a href="/contact" class="btn btn-primary text-center">
+          Get in touch
+        </a>
+        <a href="/resume.pdf" target="_blank" class="btn btn-secondary text-center">
+          Download Resume
+        </a>
+      </div>
     </div>
   </div>
 </BaseLayout>

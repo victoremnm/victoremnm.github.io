@@ -6,33 +6,34 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Blog" description="Thoughts, ideas, and learnings">
-  <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Blog</h1>
-    <p class="text-xl text-gray-600 mb-8">
-      Thoughts on building, coaching, and everything in between.
+<BaseLayout title="Writing" description="Thoughts, ideas, and learnings">
+  <div class="mx-auto max-w-[900px] px-6 py-16">
+    <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-4">Writing</h1>
+    <p class="text-lg text-[#888888] mb-8">
+      Thoughts on building, learning, and everything in between.
     </p>
 
     <!-- Subscribe Section -->
-    <div class="bg-gray-50 rounded-lg p-6 mb-12 border border-gray-200">
+    <div class="card p-6 mb-12">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 class="text-lg font-semibold text-gray-900">Stay updated</h2>
-          <p class="text-gray-600 text-sm">Get new posts delivered to your inbox.</p>
+          <h2 class="text-sm font-medium uppercase tracking-wider text-[#f0f0f0] mb-1">Stay updated</h2>
+          <p class="text-[#555555] text-sm">Get new posts delivered to your inbox.</p>
         </div>
         <div class="flex gap-3">
           <a
             href="https://victoremnm.substack.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center px-4 py-2 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors"
+            class="btn btn-primary"
           >
-            Subscribe on Substack
+            Subscribe
           </a>
           <a
             href="/rss.xml"
-            class="inline-flex items-center px-3 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+            class="flex items-center justify-center w-11 h-11 border border-[#222222] text-[#888888] hover:text-[#60A5FA] hover:border-[#60A5FA] transition-colors"
             title="RSS Feed"
+            style="border-radius: 2px;"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z"></path>
@@ -44,45 +45,37 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
     </div>
 
+    <div class="section-header">All Posts</div>
+
     {allPosts.length > 0 ? (
-      <div class="space-y-8">
+      <div class="space-y-3">
         {allPosts.map((post) => (
-          <article class="group">
-            <a href={`/blog/${post.slug}`} class="block">
-              <div class="flex items-center gap-3 text-sm text-gray-500 mb-2">
-                <time datetime={post.data.date.toISOString()}>
-                  {post.data.date.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </time>
-                {post.data.tags.length > 0 && (
-                  <>
-                    <span>·</span>
-                    <div class="flex gap-2">
-                      {post.data.tags.slice(0, 2).map((tag) => (
-                        <span class="text-gray-400">#{tag}</span>
-                      ))}
-                    </div>
-                  </>
-                )}
+          <a href={`/blog/${post.slug}`} class="card card-accent block p-5 group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex-1 min-w-0">
+                <h2 class="text-base font-medium text-[#f0f0f0] group-hover:text-[#60A5FA] transition-colors truncate">
+                  {post.data.title}
+                </h2>
+                <p class="mt-1 text-sm text-[#555555] truncate">
+                  {post.data.description}
+                </p>
               </div>
-              <h2 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                {post.data.title}
-              </h2>
-              <p class="mt-2 text-gray-600">
-                {post.data.description}
-              </p>
-              <span class="inline-block mt-3 text-blue-600 text-sm">
-                Read more →
-              </span>
-            </a>
-          </article>
+              <time
+                datetime={post.data.date.toISOString()}
+                class="text-xs font-mono text-[#555555] whitespace-nowrap"
+              >
+                {post.data.date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+            </div>
+          </a>
         ))}
       </div>
     ) : (
-      <p class="text-gray-500">No posts yet. Check back soon!</p>
+      <p class="text-[#555555]">No posts yet. Check back soon!</p>
     )}
   </div>
 </BaseLayout>

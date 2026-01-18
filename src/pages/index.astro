@@ -1,79 +1,103 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 import { getCollection } from 'astro:content';
 
-const featuredWork = await getCollection('work', ({ data }) => data.featured);
 const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 ---
 
 <BaseLayout title="Home">
-  <Hero
-    title="Hi, I'm Victor."
-    subtitle="I build things and help people grow. Welcome to my corner of the internet where I share my work, thoughts, and coaching practice."
-  >
-    <div class="mt-8 flex flex-wrap gap-4">
-      <a
-        href="/work"
-        class="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
-      >
-        View my work
-      </a>
-      <a
-        href="/contact"
-        class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:border-gray-400 transition-colors"
-      >
-        Get in touch
-      </a>
+  <!-- Hero -->
+  <section class="mx-auto max-w-[900px] px-6 py-20">
+    <h1 class="text-4xl md:text-5xl font-light tracking-tight text-[#f0f0f0] leading-tight mb-6">
+      Engineering manager &<br/>data infrastructure <span class="text-[#60A5FA]">builder</span>
+    </h1>
+    <p class="text-lg text-[#888888] max-w-xl leading-relaxed mb-8">
+      I lead teams that build real-time data systems at scale. Currently managing
+      data infrastructure at a crypto startup in Mountain View.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="/contact" class="btn btn-primary">Get in touch</a>
+      <a href="/resume.pdf" target="_blank" class="btn btn-secondary">Resume</a>
     </div>
-  </Hero>
+  </section>
 
-  {featuredWork.length > 0 && (
-    <section class="mx-auto max-w-4xl px-6 pb-16">
-      <h2 class="text-2xl font-semibold text-gray-900 mb-8">Featured Work</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        {featuredWork.map((project) => (
-          <a
-            href={`/work/${project.slug}`}
-            class="group block p-6 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all"
-          >
-            <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-              {project.data.title}
-            </h3>
-            <p class="mt-2 text-gray-600 text-sm">
-              {project.data.description}
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              {project.data.tags.slice(0, 3).map((tag) => (
-                <span class="px-2 py-1 bg-gray-50 text-gray-500 rounded text-xs">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </a>
-        ))}
+  <!-- Metrics -->
+  <section class="mx-auto max-w-[900px] px-6 pb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="card p-6">
+        <div class="text-2xl font-mono font-medium text-[#60A5FA] mb-2">400+</div>
+        <div class="text-xs uppercase tracking-wider text-[#555555]">Trades / Second</div>
       </div>
-      <div class="mt-8">
-        <a href="/work" class="text-blue-600 hover:underline">
-          View all work &rarr;
-        </a>
+      <div class="card p-6">
+        <div class="text-2xl font-mono font-medium text-[#60A5FA] mb-2">1,300+</div>
+        <div class="text-xs uppercase tracking-wider text-[#555555]">Engineers Onboarded</div>
       </div>
-    </section>
-  )}
+      <div class="card p-6">
+        <div class="text-2xl font-mono font-medium text-[#60A5FA] mb-2">$200K+</div>
+        <div class="text-xs uppercase tracking-wider text-[#555555]">Scholarships Raised</div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Experience -->
+  <section class="mx-auto max-w-[900px] px-6 pb-16">
+    <div class="section-header">Experience</div>
+    <div class="space-y-0">
+      <div class="grid grid-cols-[140px_1fr] gap-6 py-4 border-b border-[#222222]">
+        <div class="font-mono text-sm text-[#555555]">2025 — Now</div>
+        <div>
+          <h3 class="text-base font-medium text-[#f0f0f0]">Engineering Manager</h3>
+          <div class="text-sm text-[#888888]">Stealth Crypto Startup</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-[140px_1fr] gap-6 py-4 border-b border-[#222222]">
+        <div class="font-mono text-sm text-[#555555]">2023 — 2025</div>
+        <div>
+          <h3 class="text-base font-medium text-[#f0f0f0]">Staff Engineer, ML Platform</h3>
+          <div class="text-sm text-[#888888]">SiriusXM</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-[140px_1fr] gap-6 py-4 border-b border-[#222222]">
+        <div class="font-mono text-sm text-[#555555]">2022 — 2023</div>
+        <div>
+          <h3 class="text-base font-medium text-[#f0f0f0]">Senior Data Engineer</h3>
+          <div class="text-sm text-[#888888]">Meta</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-[140px_1fr] gap-6 py-4 border-b border-[#222222]">
+        <div class="font-mono text-sm text-[#555555]">2019 — 2022</div>
+        <div>
+          <h3 class="text-base font-medium text-[#f0f0f0]">Data Engineering Lead</h3>
+          <div class="text-sm text-[#888888]">Disney Streaming</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-[140px_1fr] gap-6 py-4">
+        <div class="font-mono text-sm text-[#555555]">2016 — 2019</div>
+        <div>
+          <h3 class="text-base font-medium text-[#f0f0f0]">Data Analyst / Data Scientist</h3>
+          <div class="text-sm text-[#888888]">Foursquare</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing -->
   {recentPosts.length > 0 && (
-    <section class="mx-auto max-w-4xl px-6 pb-24">
-      <h2 class="text-2xl font-semibold text-gray-900 mb-8">Recent Writing</h2>
-      <div class="space-y-6">
+    <section class="mx-auto max-w-[900px] px-6 pb-24">
+      <div class="section-header">Writing</div>
+      <div class="space-y-3">
         {recentPosts.map((post) => (
-          <a
-            href={`/blog/${post.slug}`}
-            class="group block p-6 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all"
-          >
-            <div class="flex items-center gap-3 text-sm text-gray-500 mb-2">
-              <time datetime={post.data.date.toISOString()}>
+          <a href={`/blog/${post.slug}`} class="card card-accent block p-5 group">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-base font-medium text-[#f0f0f0] group-hover:text-[#60A5FA] transition-colors">
+                {post.data.title}
+              </h3>
+              <time
+                datetime={post.data.date.toISOString()}
+                class="text-xs font-mono text-[#555555] whitespace-nowrap"
+              >
                 {post.data.date.toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'short',
@@ -81,18 +105,12 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
                 })}
               </time>
             </div>
-            <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-              {post.data.title}
-            </h3>
-            <p class="mt-2 text-gray-600 text-sm">
-              {post.data.description}
-            </p>
           </a>
         ))}
       </div>
-      <div class="mt-8">
-        <a href="/blog" class="text-blue-600 hover:underline">
-          Read all posts &rarr;
+      <div class="mt-6">
+        <a href="/blog" class="text-[#60A5FA] hover:opacity-80 transition-opacity text-sm">
+          Read all posts →
         </a>
       </div>
     </section>

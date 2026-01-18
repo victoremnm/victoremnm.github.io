@@ -3,32 +3,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Contact" description="Get in touch with Victor">
-  <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Contact</h1>
-    <p class="text-xl text-gray-600 mb-12">
+  <div class="mx-auto max-w-[900px] px-6 py-16">
+    <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-4">Contact</h1>
+    <p class="text-lg text-[#888888] mb-12">
       I'd love to hear from you. Whether you have a question, want to collaborate,
       or just want to say hello — reach out.
     </p>
 
-    <div class="space-y-8">
-      <div>
-        <h2 class="text-lg font-semibold text-gray-900 mb-4">Email</h2>
+    <div class="space-y-10">
+      <section>
+        <h2 class="section-header">Email</h2>
         <a
           href="mailto:victorem@alumni.stanford.edu"
-          class="text-blue-600 hover:underline"
+          class="text-[#60A5FA] hover:opacity-80 transition-opacity font-mono"
         >
           victorem@alumni.stanford.edu
         </a>
-      </div>
+      </section>
 
-      <div>
-        <h2 class="text-lg font-semibold text-gray-900 mb-4">Connect</h2>
+      <section>
+        <h2 class="section-header">Connect</h2>
         <div class="flex flex-col gap-3">
           <a
             href="https://github.com/victoremnm"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-600 hover:text-gray-900 transition-colors"
+            class="text-[#888888] hover:text-[#60A5FA] transition-colors"
           >
             GitHub →
           </a>
@@ -36,7 +36,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             href="https://linkedin.com/in/victorem"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-600 hover:text-gray-900 transition-colors"
+            class="text-[#888888] hover:text-[#60A5FA] transition-colors"
           >
             LinkedIn →
           </a>
@@ -44,38 +44,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             href="https://victoremnm.substack.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-600 hover:text-gray-900 transition-colors"
+            class="text-[#888888] hover:text-[#60A5FA] transition-colors"
           >
             Substack →
           </a>
         </div>
-      </div>
+      </section>
 
-      <div>
-        <h2 class="text-lg font-semibold text-gray-900 mb-4">Schedule a Chat</h2>
-        <p class="text-gray-600 mb-4">
+      <section>
+        <h2 class="section-header">Schedule a Chat</h2>
+        <p class="text-[#888888] mb-4">
           Want to connect? Book some time on my calendar.
         </p>
         <a
           href="https://calendar.app.google/k8jxn3WuzzdaWhos6"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-block px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+          class="btn btn-primary"
         >
           Book a meeting
         </a>
-      </div>
+      </section>
 
-      <div>
-        <h2 class="text-lg font-semibold text-gray-900 mb-4">Resume</h2>
+      <section>
+        <h2 class="section-header">Resume</h2>
         <a
           href="/resume.pdf"
           target="_blank"
-          class="inline-flex items-center gap-2 text-blue-600 hover:underline"
+          class="text-[#60A5FA] hover:opacity-80 transition-opacity"
         >
           Download Resume (PDF) →
         </a>
-      </div>
+      </section>
     </div>
   </div>
 </BaseLayout>
