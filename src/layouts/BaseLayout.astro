@@ -54,11 +54,11 @@ const { title, description = 'Personal portfolio and blog' } = Astro.props;
       });
 
       // Convert code blocks to mermaid divs and render
-      document.querySelectorAll('pre > code.language-mermaid').forEach((codeBlock, index) => {
-        const pre = codeBlock.parentElement;
+      document.querySelectorAll('pre[data-language="mermaid"]').forEach((pre) => {
+        const code = pre.querySelector('code');
         const div = document.createElement('div');
         div.className = 'mermaid';
-        div.textContent = codeBlock.textContent;
+        div.textContent = code ? code.textContent : pre.textContent;
         pre.replaceWith(div);
       });
 
