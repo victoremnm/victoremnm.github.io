@@ -174,7 +174,7 @@ CREATE TABLE dim_customer (
 | Type 2 | Full | High | Accurate historical reporting |
 | Type 3 | Limited (current + previous) | Medium | When only "before/after" matters |
 
-> **Victor's Take:** In interviews, default to discussing Type 2 for important attributes. It shows you understand the value of historical accuracy. Then mention "for less critical attributes, Type 1 is fine to avoid complexity."
+> In interviews, default to discussing Type 2 for important attributes. It shows you understand the value of historical accuracy. Then mention "for less critical attributes, Type 1 is fine to avoid complexity."
 
 ---
 
@@ -338,7 +338,7 @@ GROUP BY dr.driver_id, dr.driver_name;
 | SCD Deep Dive | [Slowly Changing Dimensions for Data Engineers](https://youtu.be/1FZ7et0pN4c) | Type 1, 2, 3 with examples |
 | Architecture Tradeoffs | [OBT vs Kimball vs Relational](https://youtu.be/ltQgbSs99WU) | When to use each approach |
 | Uber Exercise | [Data Modeling: Taxi Service](https://medium.com/towards-data-engineering/data-modelling-design-the-data-model-for-a-taxi-service-like-uber-eaedfa0e25f4) | Practice problem |
-| Kimball Book (Ch 1-2) | [The Data Warehouse Toolkit](https://drive.google.com/file/d/19Qo9fWZwPRCN45B0NshwxdNLuUYPg3fJ/view) | Foundational reading |
+| Kimball Book (Ch 1-2) | [The Data Warehouse Toolkit](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/) | Foundational reading |
 
 ---
 
