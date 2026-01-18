@@ -29,5 +29,28 @@ const { title, description = 'Personal portfolio and blog' } = Astro.props;
       <slot />
     </main>
     <Footer />
+
+    <!-- Mermaid diagram rendering -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+          primaryColor: '#1e293b',
+          primaryTextColor: '#f0f0f0',
+          primaryBorderColor: '#60A5FA',
+          lineColor: '#60A5FA',
+          secondaryColor: '#334155',
+          tertiaryColor: '#1e293b',
+          background: '#0a0a0a',
+          mainBkg: '#1e293b',
+          nodeBorder: '#60A5FA',
+          clusterBkg: '#1e293b',
+          titleColor: '#f0f0f0',
+          edgeLabelBackground: '#1e293b'
+        }
+      });
+    </script>
   </body>
 </html>
