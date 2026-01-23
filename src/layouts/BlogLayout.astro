@@ -17,35 +17,35 @@ const formattedDate = date.toLocaleDateString('en-US', {
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="mx-auto max-w-[900px] px-6 py-16">
-    <header class="mb-12">
-      <div class="flex items-center gap-3 text-sm text-[#555555] mb-4">
+  <article class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
+    <header class="mb-12 gxsc-reveal gxsc-delay-1">
+      <div class="flex items-center gap-3 text-sm text-[var(--color-text-muted)] mb-4">
         <time datetime={date.toISOString()} class="font-mono">{formattedDate}</time>
         {tags.length > 0 && (
           <>
             <span>·</span>
             <div class="flex gap-2">
               {tags.map((tag) => (
-                <span class="text-[#555555]">#{tag}</span>
+                <span class="text-[var(--color-text-muted)]">#{tag}</span>
               ))}
             </div>
           </>
         )}
       </div>
-      <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] leading-tight">
+      <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] leading-tight font-display">
         {title}
       </h1>
       {description && (
-        <p class="mt-4 text-lg text-[#888888]">
+        <p class="mt-4 text-lg text-[var(--color-text-secondary)]">
           {description}
         </p>
       )}
     </header>
-    <div class="prose prose-invert max-w-none prose-headings:font-light prose-headings:tracking-tight prose-a:text-[#60A5FA] prose-a:no-underline hover:prose-a:underline prose-code:text-[#60A5FA] prose-pre:bg-[#141414] prose-pre:border prose-pre:border-[#222222]">
+    <div class="prose max-w-none prose-headings:font-light prose-headings:tracking-tight prose-a:no-underline hover:prose-a:underline prose-pre:border prose-pre:border-[var(--color-border)]">
       <slot />
     </div>
-    <footer class="mt-16 pt-8 border-t border-[#222222]">
-      <a href="/blog" class="text-[#60A5FA] hover:opacity-80 transition-opacity">
+    <footer class="mt-16 pt-8 border-t border-[var(--color-border)]">
+      <a href="/blog" class="text-[var(--color-accent)] hover:opacity-80 transition-opacity">
         &larr; Back to all posts
       </a>
     </footer>

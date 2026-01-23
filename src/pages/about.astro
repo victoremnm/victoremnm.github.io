@@ -3,17 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About" description="Learn more about Victor and his background">
-  <div class="mx-auto max-w-[900px] px-6 py-16">
-    <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-8">About</h1>
+  <div class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
+    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-8 font-display">About</h1>
 
-    <div class="space-y-12">
-      <p class="text-xl text-[#888888] leading-relaxed">
-        I'm Victor — an engineering manager and data infrastructure builder based in Mountain View.
+    <div class="space-y-12 gxsc-reveal gxsc-delay-1">
+      <p class="text-xl text-[var(--color-text-secondary)] leading-relaxed">
+        I'm Victor  -  an engineering manager and data infrastructure builder based in Bay Area.
       </p>
 
       <section>
         <h2 class="section-header">What I Do</h2>
-        <div class="space-y-4 text-[#888888] leading-relaxed">
+        <div class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
           <p>
             I lead teams that build real-time data systems at scale. Currently, I'm managing
             data infrastructure at a crypto startup, designing systems that process
@@ -30,7 +30,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <section>
         <h2 class="section-header">Beyond Work</h2>
-        <p class="text-[#888888] leading-relaxed">
+        <p class="text-[var(--color-text-secondary)] leading-relaxed">
           I'm a trustee of a 501(c)(3) that provides scholarships to college students.
           We've raised over $200K and serve students across 60+ universities.
         </p>
@@ -38,7 +38,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <section>
         <h2 class="section-header">Background</h2>
-        <p class="text-[#888888] leading-relaxed">
+        <p class="text-[var(--color-text-secondary)] leading-relaxed">
           I studied at Stanford, trained BJJ, and believe the best systems are built
           by people who care about the humans using them.
         </p>
@@ -46,12 +46,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <section>
         <h2 class="section-header">When I'm Not Working</h2>
-        <p class="text-[#888888] leading-relaxed">
+        <p class="text-[var(--color-text-secondary)] leading-relaxed">
           You'll find me exploring the Bay Area, on the mats, or writing about what I'm learning.
         </p>
       </section>
 
-      <div class="pt-8 border-t border-[#222222] flex flex-col sm:flex-row gap-4">
+      <div class="pt-8 border-t border-[var(--color-border)] flex flex-col sm:flex-row gap-4 gxsc-reveal gxsc-delay-2">
         <a href="/contact" class="btn btn-primary text-center">
           Get in touch
         </a>
