@@ -23,7 +23,7 @@ In data engineering roles, behavioral rounds assess:
 - How you respond to failure
 - Your ability to influence decisions
 
-> **Victor's Take:** I've seen technically brilliant candidates get rejected because their behavioral answers were rambling or defensive. Structure matters as much here as in a system design question.
+> I've seen technically brilliant candidates get rejected because their behavioral answers were rambling or defensive. Structure matters as much here as in a system design question.
 
 ---
 
@@ -41,11 +41,11 @@ SCORE is similar to STAR but adds explicit space for reflection:
 
 ### Why SCORE vs STAR?
 
-STAR ends at Result. SCORE adds Evaluation—showing self-awareness and growth mindset. Interviewers love this.
+STAR ends at Result. SCORE adds Evaluation - showing self-awareness and growth mindset. Interviewers love this.
 
 ```
 STAR: "...and we shipped on time."
-SCORE: "...and we shipped on time. Looking back, I'd start stakeholder alignment earlier—I underestimated how much that would matter."
+SCORE: "...and we shipped on time. Looking back, I'd start stakeholder alignment earlier - I underestimated how much that would matter."
 ```
 
 ---
@@ -63,7 +63,7 @@ This is the most important behavioral question. Your answer reveals:
 
 Before telling your story, frame what failure means to you:
 
-> "As a data engineer, I consider it a failure if the datasets I build aren't used—or if users find them hard to use. Technical correctness isn't enough if it doesn't deliver value."
+> "As a data engineer, I consider it a failure if the datasets I build aren't used - or if users find them hard to use. Technical correctness isn't enough if it doesn't deliver value."
 
 or
 
@@ -74,16 +74,16 @@ or
 **Question:** "Tell me about a time you failed."
 
 **S - Situation:**
-"I was leading the data model for a new Segment Store project—a self-serve tool for marketing to create audience segments."
+"I was leading the data model for a new Segment Store project - a self-serve tool for marketing to create audience segments."
 
 **C - Complication:**
 "The project overlapped with existing tools, and my team was under-resourced. I pushed forward anyway because I believed in the vision."
 
 **O - Overcome:**
-"When adoption stalled, I pivoted. Instead of forcing marketing adoption, I identified alternative stakeholders—the data science team—who had an immediate need. I scoped down to an MVP that solved their specific problem."
+"When adoption stalled, I pivoted. Instead of forcing marketing adoption, I identified alternative stakeholders - the data science team - who had an immediate need. I scoped down to an MVP that solved their specific problem."
 
 **R - Result:**
-"The data science team adopted it within two weeks. Marketing eventually came around six months later once they saw it working. But by my original success criteria—marketing self-service in Q1—I failed."
+"The data science team adopted it within two weeks. Marketing eventually came around six months later once they saw it working. But by my original success criteria - marketing self-service in Q1 - I failed."
 
 **E - Evaluation:**
 "What I learned: early alignment and realistic scope management prevent adoption failures. I was so focused on the technical solution that I underestimated organizational readiness. Now I spend more time upfront understanding who actually *wants* what I'm building."
@@ -102,7 +102,7 @@ or
 | **C** | He was frustrated, questioned the direction, slowed down estimation |
 | **O** | Called a democratic discussion, let both perspectives be evaluated fairly |
 | **R** | Reached consensus on scalable approach, shipped on schedule |
-| **E** | Now I brief returning members on key changes—even small check-ins prevent misalignment |
+| **E** | Now I brief returning members on key changes - even small check-ins prevent misalignment |
 
 ### Influencing Without Authority
 
@@ -126,7 +126,7 @@ or
 | **C** | Team lacked clear guidance, risk of people spinning without direction |
 | **O** | Created onboarding docs, designed starter projects, diversified backlog so everyone had appropriate challenges |
 | **R** | Two contractors became full-time, one now leads a team |
-| **E** | Proactive onboarding leads to strong future leadership—worth the upfront investment |
+| **E** | Proactive onboarding leads to strong future leadership - worth the upfront investment |
 
 ### Receiving Feedback
 
@@ -137,7 +137,7 @@ Best approach:
 2. Explain what changed as a result
 3. Express gratitude (genuine, not performative)
 
-> **Victor's Take:** The worst answers are "I can't think of any critical feedback" or long justifications of why the feedback was wrong. Even if you disagreed, show you engaged with it thoughtfully.
+> The worst answers are "I can't think of any critical feedback" or long justifications of why the feedback was wrong. Even if you disagreed, show you engaged with it thoughtfully.
 
 ---
 
@@ -201,7 +201,7 @@ Interviewers want to know what *you* did.
 ### 2. No Quantification
 
 **Bad:** "It was a big improvement."
-**Good:** "Query time dropped from 45 seconds to 3 seconds—a 15x improvement."
+**Good:** "Query time dropped from 45 seconds to 3 seconds - a 15x improvement."
 
 Numbers make stories concrete and memorable.
 
@@ -234,7 +234,7 @@ The evaluation section is where you show growth mindset.
 - Tell me about a data quality issue you caught and resolved
 - Describe a time you had to balance technical debt with feature work
 - How do you handle requests from stakeholders with conflicting priorities?
-- Tell me about a pipeline that broke in production—what happened and how did you respond?
+- Tell me about a pipeline that broke in production - what happened and how did you respond?
 
 ### Leadership Signals
 - Tell me about a time you mentored someone
@@ -246,11 +246,11 @@ The evaluation section is where you show growth mindset.
 
 ## Key Takeaways
 
-1. **Use SCORE** — Situation, Complication, Overcome, Result, Evaluation
-2. **Lead with "I"** — Make your individual contribution clear
-3. **Quantify results** — Numbers make stories memorable
-4. **Own failures** — Accountability > blame
-5. **End with learning** — Show growth mindset
-6. **Prepare 5-7 stories** — Practice until they feel natural, not rehearsed
+1. **Use SCORE**  -  Situation, Complication, Overcome, Result, Evaluation
+2. **Lead with "I"**  -  Make your individual contribution clear
+3. **Quantify results**  -  Numbers make stories memorable
+4. **Own failures**  -  Accountability > blame
+5. **End with learning**  -  Show growth mindset
+6. **Prepare 5-7 stories**  -  Practice until they feel natural, not rehearsed
 
-> **Final Victor's Take:** Behavioral interviews are about pattern-matching. The interviewer is asking "Will this person be a good colleague?" Your job is to give them evidence. Concrete stories with clear structure give them the evidence they need to advocate for you.
+> Behavioral interviews are about pattern-matching. The interviewer is asking "Will this person be a good colleague?" Your job is to give them evidence. Concrete stories with clear structure give them the evidence they need to advocate for you.

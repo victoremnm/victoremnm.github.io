@@ -62,8 +62,8 @@ flowchart TB
 
 | State | Definition | Logic |
 |-------|------------|-------|
-| **Never Active** | User who joined but has not done any activity | `current_state = NULL`, `previous_state = NULL` |
-| **New** | User first active in the present period (not seen in previous period) | `current_state = 1`, `previous_state = NULL` |
+| **Never Active** | User who joined but has not done any activity | `current_state IS NULL`, `previous_state IS NULL` |
+| **New** | User first active in the present period (not seen in previous period) | `current_state = 1`, `previous_state IS NULL` |
 | **Retained** | User active in previous period and remains active in current | `current_state = 1`, `previous_state = 1` |
 | **Churned** | User active in previous period but not engaged in current | `current_state = 0`, `previous_state = 1` |
 | **Dormant** | User active in the past, but not in current or previous period | `current_state = 0`, `previous_state = 0` |
@@ -149,7 +149,7 @@ The common pattern is a **cumulative/snapshot table** containing state transitio
 ### Mitigations
 
 - **Aggregation**: Pre-aggregate metrics at the appropriate grain
-- **Simplify States**: Keep tables normalized—don't include denormalized info if not needed for state calculation
+- **Simplify States**: Keep tables normalized - don't include denormalized info if not needed for state calculation
 
 ---
 

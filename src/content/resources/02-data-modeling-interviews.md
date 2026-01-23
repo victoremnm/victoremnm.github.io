@@ -21,7 +21,7 @@ In data engineering interviews, you'll be asked to design schemas for real-world
 3. Handle slowly changing data appropriately
 4. Think about how analysts will actually use your models
 
-> **Victor's Take:** Data modeling questions separate "I can write SQL" from "I can design systems analysts love to use." The best candidates think about the end user—the analyst writing queries at 2am trying to answer a business question.
+> **Victor's Take:** Data modeling questions separate "I can write SQL" from "I can design systems analysts love to use." The best candidates think about the end user - the analyst writing queries at 2am trying to answer a business question.
 
 ---
 
@@ -64,7 +64,7 @@ The core building blocks:
 - Contain **measurements/metrics** (quantities, amounts, counts)
 - Have **foreign keys** to dimension tables
 - Are typically **append-only** (events don't change)
-- Granularity is crucial—one row = one event/transaction
+- Granularity is crucial - one row = one event/transaction
 
 **Example: Sales Fact**
 ```sql
@@ -316,10 +316,10 @@ GROUP BY dr.driver_id, dr.driver_name;
 ### Q: "When would you NOT use a star schema?"
 
 **Answer:**
-1. **OLTP systems** — Need normalized structure for write performance
-2. **Unknown query patterns** — Highly flexible ad-hoc analysis might prefer normalized
-3. **Very small datasets** — OBT is simpler and fast enough
-4. **Real-time streaming** — Event-sourcing patterns might be more appropriate
+1. **OLTP systems**  -  Need normalized structure for write performance
+2. **Unknown query patterns**  -  Highly flexible ad-hoc analysis might prefer normalized
+3. **Very small datasets**  -  OBT is simpler and fast enough
+4. **Real-time streaming**  -  Event-sourcing patterns might be more appropriate
 
 ### Q: "How do you handle late-arriving facts?"
 
@@ -344,11 +344,11 @@ GROUP BY dr.driver_id, dr.driver_name;
 
 ## Key Takeaways
 
-1. **State your grain first** — Everything else flows from "one row = one X"
-2. **Know SCD types cold** — Type 2 is the default for important attributes
-3. **Think about the analyst** — Design for the queries they'll write
-4. **Explain tradeoffs** — There's no perfect answer, only good reasoning
-5. **Draw it out** — Interviewers love to see you sketch the schema
+1. **State your grain first**  -  Everything else flows from "one row = one X"
+2. **Know SCD types cold**  -  Type 2 is the default for important attributes
+3. **Think about the analyst**  -  Design for the queries they'll write
+4. **Explain tradeoffs**  -  There's no perfect answer, only good reasoning
+5. **Draw it out**  -  Interviewers love to see you sketch the schema
 
 > **Final Victor's Take:** The best data models are boring. They're predictable, consistent, and let analysts focus on insights instead of fighting the schema. If you're explaining clever workarounds, you've probably over-engineered it.
 
