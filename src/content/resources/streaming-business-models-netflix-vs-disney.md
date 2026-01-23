@@ -58,10 +58,10 @@ Note the massive ARPU difference between live TV bundles ($59.47) and standalone
 
 Subscription states are more nuanced than "active" or "cancelled." You need to track:
 
-- **Entitlement status** — can they access content right now?
-- **Payment history** — have they ever paid vs. always free trial?
-- **Cancellation type** — voluntary (user chose to leave) vs. involuntary (payment failed)
-- **Pending states** — grace periods before full cancellation
+- **Entitlement status**  -  can they access content right now?
+- **Payment history**  -  have they ever paid vs. always free trial?
+- **Cancellation type**  -  voluntary (user chose to leave) vs. involuntary (payment failed)
+- **Pending states**  -  grace periods before full cancellation
 
 This allows you to derive actionable segments like "at-risk paid subscribers" or "trial users likely to convert."
 

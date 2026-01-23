@@ -19,8 +19,8 @@ Data engineering interviews often start with product sense questions, even thoug
 The three canonical question types:
 
 1. **"How would you measure the health of product X?"**
-2. **"We're launching feature Y—how do we measure success?"**
-3. **"Metric Z declined/increased—how would you investigate?"**
+2. **"We're launching feature Y - how do we measure success?"**
+3. **"Metric Z declined/increased - how would you investigate?"**
 
 > **Victor's Take:** I've seen candidates nail the SQL portion but stumble here because they jump straight to "I'd look at DAU" without a framework. The framework matters more than the specific metrics you name.
 
@@ -39,10 +39,10 @@ Every metrics question can be structured with this hierarchy:
 
 ### Why This Order?
 
-1. **North Star first** — anchors the conversation and shows you understand the product
-2. **Leading indicators** — demonstrates you know what's actionable day-to-day
-3. **Lagging indicators** — shows long-term thinking
-4. **Countermetrics** — proves you won't optimize one thing at the expense of everything else
+1. **North Star first**  -  anchors the conversation and shows you understand the product
+2. **Leading indicators**  -  demonstrates you know what's actionable day-to-day
+3. **Lagging indicators**  -  shows long-term thinking
+4. **Countermetrics**  -  proves you won't optimize one thing at the expense of everything else
 
 ---
 
@@ -108,7 +108,7 @@ This is about experiment design thinking, not just metrics.
 
 ---
 
-## Answering "Metric Z declined—how would you investigate?"
+## Answering "Metric Z declined - how would you investigate?"
 
 This is the most common "debugging" question. Use the **DECOMPOSE** framework:
 
@@ -129,7 +129,7 @@ E - Escalate appropriately (who needs to know?)
 **Initial questions:**
 - When exactly did the drop start?
 - Is it across all regions or specific markets?
-- Device breakdown—mobile vs TV vs web?
+- Device breakdown - mobile vs TV vs web?
 - Did we have any app updates, outages, or content changes?
 
 **Segmentation analysis:**
@@ -172,7 +172,7 @@ rollup = {
 <details>
 <summary>Clarifying Questions to Ask</summary>
 
-- Is a user counted once even if active on multiple platforms? (Yes—dedupe)
+- Is a user counted once even if active on multiple platforms? (Yes - dedupe)
 - Will there always be these 3 platforms? (For now, yes)
 - What does 1 vs 0 represent? (1 = active that day)
 
@@ -234,13 +234,13 @@ These videos walk through the frameworks in action:
 
 ## Key Takeaways
 
-1. **Use a framework** — Don't just list metrics. Show structured thinking.
-2. **Start with North Star** — Anchor the conversation in business value.
-3. **Always include countermetrics** — Shows you think about tradeoffs.
-4. **Segment everything** — The aggregate number hides the story.
-5. **For declines, be systematic** — Timeline → External factors → Segments → Hypotheses.
+1. **Use a framework**  -  Don't just list metrics. Show structured thinking.
+2. **Start with North Star**  -  Anchor the conversation in business value.
+3. **Always include countermetrics**  -  Shows you think about tradeoffs.
+4. **Segment everything**  -  The aggregate number hides the story.
+5. **For declines, be systematic**  -  Timeline → External factors → Segments → Hypotheses.
 
-> **Final Victor's Take:** The best candidates I've seen treat metrics questions like a conversation, not a recitation. They ask clarifying questions, think out loud, and adjust based on the interviewer's reactions. The framework is your skeleton—flesh it out with genuine curiosity about the product.
+> **Final Victor's Take:** The best candidates I've seen treat metrics questions like a conversation, not a recitation. They ask clarifying questions, think out loud, and adjust based on the interviewer's reactions. The framework is your skeleton - flesh it out with genuine curiosity about the product.
 
 ---
 
