@@ -18,9 +18,17 @@ const { title, description = 'Personal portfolio and blog' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (() => {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored ?? (prefersDark ? 'dark' : 'dark');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <title>{title} | victorem</title>
   </head>
   <body class="min-h-screen flex flex-col">
@@ -30,26 +38,53 @@ const { title, description = 'Personal portfolio and blog' } = Astro.props;
     </main>
     <Footer />
 
+    <script>
+      const setToggleLabel = (el, theme) => {
+        if (!el) return;
+        el.textContent = theme === 'dark' ? 'Dark' : 'Light';
+      };
+
+      const applyTheme = (theme) => {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+        const toggle = document.querySelector('[data-theme-toggle]');
+        setToggleLabel(toggle, theme);
+      };
+
+      const toggleButton = document.querySelector('[data-theme-toggle]');
+      if (toggleButton) {
+        const currentTheme = document.documentElement.dataset.theme || 'light';
+        setToggleLabel(toggleButton, currentTheme);
+        toggleButton.addEventListener('click', () => {
+          const nextTheme = (document.documentElement.dataset.theme || 'light') === 'dark' ? 'light' : 'dark';
+          applyTheme(nextTheme);
+        });
+      }
+    </script>
+
     <!-- Mermaid diagram rendering -->
     <script type="module">
+      const rootStyles = getComputedStyle(document.documentElement);
+      const c = (name, fallback) => rootStyles.getPropertyValue(name).trim() || fallback;
+
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
 
       mermaid.initialize({
         startOnLoad: false,
-        theme: 'dark',
+        theme: 'base',
         themeVariables: {
-          primaryColor: '#1e293b',
-          primaryTextColor: '#f0f0f0',
-          primaryBorderColor: '#60A5FA',
-          lineColor: '#60A5FA',
-          secondaryColor: '#334155',
-          tertiaryColor: '#1e293b',
-          background: '#0a0a0a',
-          mainBkg: '#1e293b',
-          nodeBorder: '#60A5FA',
-          clusterBkg: '#1e293b',
-          titleColor: '#f0f0f0',
-          edgeLabelBackground: '#1e293b'
+          primaryColor: c('--color-bg-card', '#e8edf1'),
+          primaryTextColor: c('--color-text-primary', '#1b262c'),
+          primaryBorderColor: c('--color-border', '#c4ccd4'),
+          lineColor: c('--color-accent', '#4a6b7e'),
+          secondaryColor: c('--color-bg-card-hover', '#e2e8ed'),
+          tertiaryColor: c('--color-bg-primary', '#f1f4f6'),
+          background: c('--color-bg-primary', '#f1f4f6'),
+          mainBkg: c('--color-bg-card', '#e8edf1'),
+          nodeBorder: c('--color-border', '#c4ccd4'),
+          clusterBkg: c('--color-bg-card-hover', '#e2e8ed'),
+          titleColor: c('--color-text-primary', '#1b262c'),
+          edgeLabelBackground: c('--color-bg-card', '#e8edf1')
         }
       });
 

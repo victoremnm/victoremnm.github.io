@@ -15,10 +15,10 @@ const { Content } = await resource.render();
 ---
 
 <BaseLayout title={resource.data.title} description={resource.data.description}>
-  <article class="mx-auto max-w-[900px] px-6 py-16">
-    <header class="mb-12">
-      <div class="flex items-center gap-3 text-sm text-[#555555] mb-4 font-mono">
-        <a href="/resources" class="hover:text-[#60A5FA] transition-colors">← Resources</a>
+  <article class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
+    <header class="mb-12 gxsc-reveal gxsc-delay-1">
+      <div class="flex items-center gap-3 text-sm text-[var(--color-text-muted)] mb-4 font-mono">
+        <a href="/resources" class="hover:text-[var(--color-accent)] transition-colors">← Resources</a>
         <span>·</span>
         <time datetime={resource.data.date.toISOString()}>
           {resource.data.date.toLocaleDateString('en-US', {
@@ -28,19 +28,19 @@ const { Content } = await resource.render();
           })}
         </time>
       </div>
-      <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-4">
+      <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-4 font-display">
         {resource.data.title}
       </h1>
-      <p class="text-lg text-[#888888]">{resource.data.description}</p>
+      <p class="text-lg text-[var(--color-text-secondary)]">{resource.data.description}</p>
       {resource.data.tags.length > 0 && (
         <div class="flex gap-2 mt-4">
           {resource.data.tags.map((tag) => (
-            <span class="text-xs font-mono text-[#60A5FA]">#{tag}</span>
+            <span class="text-xs font-mono text-[var(--color-accent)]">#{tag}</span>
           ))}
         </div>
       )}
     </header>
-    <div class="prose prose-invert prose-lg max-w-none">
+    <div class="prose prose-lg max-w-none gxsc-reveal gxsc-delay-2">
       <Content />
     </div>
   </article>

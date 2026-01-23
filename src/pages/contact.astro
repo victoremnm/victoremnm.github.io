@@ -3,19 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Contact" description="Get in touch with Victor">
-  <div class="mx-auto max-w-[900px] px-6 py-16">
-    <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-4">Contact</h1>
-    <p class="text-lg text-[#888888] mb-12">
+  <div class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
+    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-4 font-display">Contact</h1>
+    <p class="text-lg text-[var(--color-text-secondary)] mb-12 gxsc-reveal gxsc-delay-1">
       I'd love to hear from you. Whether you have a question, want to collaborate,
-      or just want to say hello — reach out.
+      or just want to say hello  -  reach out.
     </p>
 
-    <div class="space-y-10">
+    <div class="space-y-10 gxsc-reveal gxsc-delay-2">
       <section>
         <h2 class="section-header">Email</h2>
         <a
           href="mailto:victorem@alumni.stanford.edu"
-          class="text-[#60A5FA] hover:opacity-80 transition-opacity font-mono"
+          class="text-[var(--color-accent)] hover:opacity-80 transition-opacity font-mono"
         >
           victorem@alumni.stanford.edu
         </a>
@@ -28,7 +28,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             href="https://github.com/victoremnm"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-[#888888] hover:text-[#60A5FA] transition-colors"
+            class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors"
           >
             GitHub →
           </a>
@@ -36,7 +36,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             href="https://linkedin.com/in/victorem"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-[#888888] hover:text-[#60A5FA] transition-colors"
+            class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors"
           >
             LinkedIn →
           </a>
@@ -44,7 +44,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             href="https://victoremnm.substack.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-[#888888] hover:text-[#60A5FA] transition-colors"
+            class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors"
           >
             Substack →
           </a>
@@ -53,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <section>
         <h2 class="section-header">Schedule a Chat</h2>
-        <p class="text-[#888888] mb-4">
+        <p class="text-[var(--color-text-secondary)] mb-4">
           Want to connect? Book some time on my calendar.
         </p>
         <a
@@ -71,7 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a
           href="/resume.pdf"
           target="_blank"
-          class="text-[#60A5FA] hover:opacity-80 transition-opacity"
+          class="text-[var(--color-accent)] hover:opacity-80 transition-opacity"
         >
           Download Resume (PDF) →
         </a>

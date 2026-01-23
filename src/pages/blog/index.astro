@@ -7,18 +7,18 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
 ---
 
 <BaseLayout title="Writing" description="Thoughts, ideas, and learnings">
-  <div class="mx-auto max-w-[900px] px-6 py-16">
-    <h1 class="text-3xl font-light tracking-tight text-[#f0f0f0] mb-4">Writing</h1>
-    <p class="text-lg text-[#888888] mb-8">
+  <div class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
+    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-4 font-display">Writing</h1>
+    <p class="text-lg text-[var(--color-text-secondary)] mb-8 gxsc-reveal gxsc-delay-1">
       Thoughts on building, learning, and everything in between.
     </p>
 
     <!-- Subscribe Section -->
-    <div class="card p-6 mb-12">
+    <div class="card p-6 mb-12 gxsc-reveal gxsc-delay-2">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 class="text-sm font-medium uppercase tracking-wider text-[#f0f0f0] mb-1">Stay updated</h2>
-          <p class="text-[#555555] text-sm">Get new posts delivered to your inbox.</p>
+          <h2 class="text-sm font-medium uppercase tracking-wider text-[var(--color-text-primary)] mb-1">Stay updated</h2>
+          <p class="text-[var(--color-text-muted)] text-sm">Get new posts delivered to your inbox.</p>
         </div>
         <div class="flex gap-3">
           <a
@@ -31,9 +31,8 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
           </a>
           <a
             href="/rss.xml"
-            class="flex items-center justify-center w-11 h-11 border border-[#222222] text-[#888888] hover:text-[#60A5FA] hover:border-[#60A5FA] transition-colors"
+            class="flex items-center justify-center w-11 h-11 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-colors rounded-full"
             title="RSS Feed"
-            style="border-radius: 2px;"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z"></path>
@@ -45,24 +44,24 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
     </div>
 
-    <div class="section-header">All Posts</div>
+    <div class="section-header gxsc-reveal gxsc-delay-2">All Posts</div>
 
     {allPosts.length > 0 ? (
-      <div class="space-y-3">
+      <div class="space-y-3 gxsc-reveal gxsc-delay-3">
         {allPosts.map((post) => (
           <a href={`/blog/${post.slug}`} class="card card-accent block p-5 group">
             <div class="flex items-center justify-between gap-4">
               <div class="flex-1 min-w-0">
-                <h2 class="text-base font-medium text-[#f0f0f0] group-hover:text-[#60A5FA] transition-colors truncate">
+                <h2 class="text-base font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors truncate">
                   {post.data.title}
                 </h2>
-                <p class="mt-1 text-sm text-[#555555] truncate">
+                <p class="mt-1 text-sm text-[var(--color-text-muted)] truncate">
                   {post.data.description}
                 </p>
               </div>
               <time
                 datetime={post.data.date.toISOString()}
-                class="text-xs font-mono text-[#555555] whitespace-nowrap"
+                class="text-xs font-mono text-[var(--color-text-muted)] whitespace-nowrap"
               >
                 {post.data.date.toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -75,7 +74,7 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
         ))}
       </div>
     ) : (
-      <p class="text-[#555555]">No posts yet. Check back soon!</p>
+      <p class="text-[var(--color-text-muted)]">No posts yet. Check back soon!</p>
     )}
   </div>
 </BaseLayout>

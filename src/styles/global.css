@@ -2,20 +2,34 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
 
-  /* Surgical Dark Theme - Sky Blue Accent */
-  --color-bg-primary: #0a0a0a;
-  --color-bg-card: #141414;
-  --color-bg-card-hover: #1a1a1a;
-  --color-border: #222222;
-  --color-border-hover: #333333;
-  --color-accent: #60A5FA;
-  --color-accent-hover: #93C5FD;
-  --color-text-primary: #f0f0f0;
-  --color-text-secondary: #888888;
-  --color-text-muted: #555555;
+  /* Gen X Soft Club - muted, overcast palette */
+  --color-bg-primary: #f1f4f6;
+  --color-bg-card: #e8edf1;
+  --color-bg-card-hover: #e2e8ed;
+  --color-border: #d4dbe1;
+  --color-border-hover: #c4ccd4;
+  --color-accent: #4a6b7e;
+  --color-accent-hover: #5c7c8d;
+  --color-text-primary: #1b262c;
+  --color-text-secondary: #4b5b66;
+  --color-text-muted: #74838c;
+}
+
+html[data-theme="dark"] {
+  --color-bg-primary: #0b1113;
+  --color-bg-card: #12191b;
+  --color-bg-card-hover: #172023;
+  --color-border: #253038;
+  --color-border-hover: #36434c;
+  --color-accent: #8aa3a8;
+  --color-accent-hover: #9db5b9;
+  --color-text-primary: #e3eaee;
+  --color-text-secondary: #a9b7bf;
+  --color-text-muted: #7e8c94;
 }
 
 html {
@@ -28,16 +42,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
+  color-scheme: light;
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(74, 107, 126, 0.14), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, rgba(96, 120, 110, 0.12), transparent 60%),
+    linear-gradient(180deg, rgba(27, 38, 44, 0.04), transparent 45%);
+}
+
+html[data-theme="dark"] body {
+  color-scheme: dark;
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(138, 163, 168, 0.16), transparent 60%),
+    radial-gradient(900px 500px at 90% 0%, rgba(96, 120, 110, 0.12), transparent 65%),
+    linear-gradient(180deg, rgba(227, 234, 238, 0.04), transparent 45%);
 }
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-bg-primary);
+  color: #f7fafc;
+}
+
+main {
+  position: relative;
 }
 
 /* Links */
 a {
-  transition: opacity 0.15s, color 0.15s;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 /* Section Headers */
@@ -52,17 +83,24 @@ a {
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Display headings */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
 /* Cards */
 .card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 2px;
-  transition: border-color 0.15s, background 0.15s;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover {
   border-color: var(--color-border-hover);
   background: var(--color-bg-card-hover);
+  transform: translateY(-1px);
 }
 
 .card-accent:hover {
@@ -74,41 +112,134 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.85rem;
-  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: 2px;
-  transition: all 0.15s;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  transition: all 0.2s ease;
 }
 
 .btn-primary {
   background: var(--color-accent);
-  color: var(--color-bg-primary);
+  color: #f7fafc;
   border: 1px solid var(--color-accent);
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: var(--color-bg-card);
   color: var(--color-text-primary);
   border: 1px solid var(--color-border);
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-text-secondary);
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
 }
 
 /* Monospace accents */
 .mono {
   font-family: var(--font-mono);
+  letter-spacing: 0.02em;
 }
 
-/* Prose overrides for dark theme */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-hover);
+}
+
+/* Mermaid ERD legibility across themes */
+.mermaid {
+  color: var(--color-text-primary);
+}
+
+.mermaid svg text {
+  fill: var(--color-text-primary);
+}
+
+.mermaid .er table {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.mermaid .er th {
+  background: var(--color-bg-card-hover);
+  color: var(--color-text-primary);
+}
+
+.mermaid .er td {
+  color: var(--color-text-secondary);
+}
+
+.mermaid .er tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--color-bg-card) 70%, var(--color-bg-primary));
+}
+
+.mermaid .er tr:nth-child(odd) td {
+  background: var(--color-bg-card);
+}
+
+/* Subtle reveal animations */
+@keyframes gxsc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gxsc-reveal {
+  animation: gxsc-fade-up 0.9s ease-out both;
+}
+
+.gxsc-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.gxsc-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.gxsc-delay-3 {
+  animation-delay: 0.35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gxsc-reveal,
+  .gxsc-delay-1,
+  .gxsc-delay-2,
+  .gxsc-delay-3 {
+    animation: none;
+  }
+}
+
+/* Prose overrides */
 .prose {
   --tw-prose-body: var(--color-text-secondary);
   --tw-prose-headings: var(--color-text-primary);
@@ -119,4 +250,9 @@ a {
   --tw-prose-hr: var(--color-border);
   --tw-prose-quotes: var(--color-text-secondary);
   --tw-prose-quote-borders: var(--color-accent);
+}
+
+.prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
 }
