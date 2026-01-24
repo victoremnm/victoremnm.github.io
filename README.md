@@ -1,43 +1,63 @@
-# Astro Starter Kit: Minimal
+# Victorem Site
 
-```sh
-npm create astro@latest -- --template minimal
+Personal site built with Astro and deployed to Cloudflare Workers.
+
+## Quickstart
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Local dev runs at:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+http://localhost:4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Common Tasks (Justfile)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+If you have `just` installed:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+just list
+just dev
+just build
+just preview
+just deploy
+```
 
-## 🧞 Commands
+## Deployment
 
-All commands are run from the root of the project, from a terminal:
+This project deploys a static build to Cloudflare Workers.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Requirements:
+- `CLOUDFLARE_API_TOKEN` set in your environment
+- `wrangler` available via `npx wrangler`
 
-## 👀 Want to learn more?
+Deploy:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+export CLOUDFLARE_API_TOKEN="<token>"
+just deploy
+```
+
+## Content
+
+Blog and resource content live here:
+- `src/content/blog/`
+- `src/content/resources/`
+
+Drafts are excluded from build by frontmatter:
+
+```yaml
+draft: true
+```
+
+The home page shows the 3 most recent non-draft blog posts by date.
+
+## Gotchas
+
+- **Preview server permissions**: in some environments, `npm run preview` may need a non-default host or elevated permissions. Use `just preview`.
+- **Tokens**: never commit or paste Cloudflare tokens. Store them in 1Password and export locally.
+- **Dates**: if a new post is not showing on the home page, check its `date` value and `draft: false`.
