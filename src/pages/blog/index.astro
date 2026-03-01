@@ -6,45 +6,14 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Writing" description="Thoughts, ideas, and learnings">
+<BaseLayout title="Technical Essays" description="Deep-dives into systems, post-mortems, and technical experiments.">
   <div class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
-    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-4 font-display">Writing</h1>
-    <p class="text-lg text-[var(--color-text-secondary)] mb-8 gxsc-reveal gxsc-delay-1">
-      Thoughts on building, learning, and everything in between.
+    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-4 font-display">Technical Essays</h1>
+    <p class="text-lg text-[var(--color-text-secondary)] mb-12 gxsc-reveal gxsc-delay-1 max-w-2xl">
+      Detailed explorations of engineering systems, retrospective post-mortems, and technical experiments.
     </p>
 
-    <!-- Subscribe Section -->
-    <div class="card p-6 mb-12 gxsc-reveal gxsc-delay-2">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h2 class="text-sm font-medium uppercase tracking-wider text-[var(--color-text-primary)] mb-1">Stay updated</h2>
-          <p class="text-[var(--color-text-muted)] text-sm">Get new posts delivered to your inbox.</p>
-        </div>
-        <div class="flex gap-3">
-          <a
-            href="https://victoremnm.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary"
-          >
-            Subscribe
-          </a>
-          <a
-            href="/rss.xml"
-            class="flex items-center justify-center w-11 h-11 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-colors rounded-full"
-            title="RSS Feed"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z"></path>
-              <path d="M4 9a1 1 0 011-1 7 7 0 017 7 1 1 0 11-2 0 5 5 0 00-5-5 1 1 0 01-1-1z"></path>
-              <circle cx="5" cy="15" r="2"></circle>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-header gxsc-reveal gxsc-delay-2">All Posts</div>
+    <div class="section-header gxsc-reveal gxsc-delay-2">All Essays</div>
 
     {allPosts.length > 0 ? (
       <div class="space-y-3 gxsc-reveal gxsc-delay-3">
