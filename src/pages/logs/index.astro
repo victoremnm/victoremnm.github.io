@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const logs = (await getCollection('logs')).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const title = 'Technical Log';
+const description = 'Daily engineering updates and changelogs.';
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="space-y-12">
+		<header class="space-y-4">
+			<h1 class="text-4xl font-bold tracking-tight text-primary">{title}</h1>
+			<p class="text-lg text-muted max-w-2xl">{description}</p>
+		</header>
+
+		<div class="space-y-12">
+			{logs.length > 0 ? (
+				logs.map((log) => (
+					<article class="space-y-4 border-l-2 border-border pl-6 relative">
+						<div class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-border"></div>
+						<div class="space-y-2">
+							<span class="text-sm font-mono text-muted">
+								{log.data.date.toLocaleDateString('en-US', {
+									year: 'numeric',
+									month: 'long',
+									day: 'numeric',
+								})}
+							</span>
+							<h2 class="text-2xl font-bold text-primary">
+								<a href={`/logs/${log.slug}`} class="hover:text-accent transition-colors">
+									{log.data.title}
+								</a>
+							</h2>
+						</div>
+						{log.data.description && (
+							<p class="text-secondary leading-relaxed max-w-3xl">
+								{log.data.description}
+							</p>
+						)}
+					</article>
+				))
+			) : (
+				<p class="text-muted italic">No logs found yet.</p>
+			)}
+		</div>
+	</div>
+</BaseLayout>

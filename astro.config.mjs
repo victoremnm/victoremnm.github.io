@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://victorem.me',
+  site: 'https://victoremnm.github.io',
   vite: {
     plugins: [tailwindcss()]
   }

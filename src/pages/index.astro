@@ -11,15 +11,15 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- Hero -->
   <section class="mx-auto max-w-[900px] px-6 py-20 gxsc-reveal">
     <h1 class="text-4xl md:text-5xl font-light tracking-tight text-[var(--color-text-primary)] leading-tight mb-6 font-display">
-      Engineering manager &<br/>data infrastructure <span class="text-[var(--color-accent)]">builder</span>
+      Victor Em's <br/><span class="text-[var(--color-accent)]">Technical Log</span>
     </h1>
     <p class="text-lg text-[var(--color-text-secondary)] max-w-xl leading-relaxed mb-8 gxsc-reveal gxsc-delay-1">
-      I lead teams that build real-time data systems at scale. Currently managing
-      data infrastructure at a crypto startup in Bay Area.
+      This is a living archive of my engineering work, system designs, and daily learnings. 
+      For my professional portfolio, visit <a href="https://victorem.me" class="text-[var(--color-accent)] hover:underline">victorem.me</a>.
     </p>
     <div class="flex flex-wrap gap-4 gxsc-reveal gxsc-delay-2">
-      <a href="/contact" class="btn btn-primary">Get in touch</a>
-      <a href="/resume.pdf" target="_blank" class="btn btn-secondary">Resume</a>
+      <a href="/logs" class="btn btn-primary">Read the Logs</a>
+      <a href="/blog" class="btn btn-secondary">Read Essays</a>
     </div>
   </section>
 

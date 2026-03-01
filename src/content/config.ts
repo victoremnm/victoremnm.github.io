@@ -35,4 +35,14 @@ const resources = defineCollection({
   }),
 });
 
-export const collections = { work, blog, resources };
+const logs = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { work, blog, resources, logs };
