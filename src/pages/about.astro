@@ -2,61 +2,50 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About" description="Learn more about Victor and his background">
+<BaseLayout title="Philosophy" description="Why I log my technical work publicly.">
   <div class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
-    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-8 font-display">About</h1>
+    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-8 font-display">Philosophy</h1>
 
     <div class="space-y-12 gxsc-reveal gxsc-delay-1">
       <p class="text-xl text-[var(--color-text-secondary)] leading-relaxed">
-        I'm Victor  -  an engineering manager and data infrastructure builder based in Bay Area.
+        This is not a traditional portfolio. This is a <strong>Technical Workshop</strong>.
       </p>
 
-      <section>
-        <h2 class="section-header">What I Do</h2>
-        <div class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
-          <p>
-            I lead teams that build real-time data systems at scale. Currently, I'm managing
-            data infrastructure at a crypto startup, designing systems that process
-400+ trades per second with sub-30ms latency.
-          </p>
-          <p>
-            Previously, I built ML platforms at SiriusXM, privacy measurement systems at Meta,
-            and helped launch Disney+ as a data engineering lead. I started my career as a
-            data analyst at Foursquare, where I cut my teeth on location intelligence and
-            product analytics.
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="section-header">Beyond Work</h2>
-        <p class="text-[var(--color-text-secondary)] leading-relaxed">
-          I'm a trustee of a 501(c)(3) that provides scholarships to college students.
-          We've raised over $200K and serve students across 60+ universities.
+      <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+        <h2 class="section-header">The Goal</h2>
+        <p>
+          As an engineer and manager, I believe the most valuable asset is not the code you've written, but the <strong>process</strong> you've developed. 
+          I use this site to publicly document my daily "Ships" and "Learnings."
+        </p>
+        <p>
+          By logging my technical journey in real-time, I create a searchable archive for myself and a transparent record of my technical growth for others.
         </p>
       </section>
 
-      <section>
-        <h2 class="section-header">Background</h2>
-        <p class="text-[var(--color-text-secondary)] leading-relaxed">
-          I studied at Stanford, trained BJJ, and believe the best systems are built
-          by people who care about the humans using them.
-        </p>
+      <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+        <h2 class="section-header">What You'll Find Here</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Logs:</strong> Raw, daily updates on what I built and what I learned.</li>
+          <li><strong>Essays:</strong> Long-form reflections on systems, management, and philosophy.</li>
+          <li><strong>Wiki:</strong> A collection of resources, frameworks, and technical guides.</li>
+          <li><strong>Work:</strong> A dashboard of current and past engineering projects.</li>
+        </ul>
       </section>
 
-      <section>
-        <h2 class="section-header">When I'm Not Working</h2>
-        <p class="text-[var(--color-text-secondary)] leading-relaxed">
-          You'll find me exploring the Bay Area, on the mats, or writing about what I'm learning.
+      <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+        <h2 class="section-header">Professional Background</h2>
+        <p>
+          If you are looking for my resume, official bio, or professional contact info, please visit my primary landing page:
         </p>
+        <a href="https://victorem.me" class="inline-block text-[var(--color-accent)] font-medium hover:underline">victorem.me →</a>
       </section>
 
       <div class="pt-8 border-t border-[var(--color-border)] flex flex-col sm:flex-row gap-4 gxsc-reveal gxsc-delay-2">
-        <a href="/contact" class="btn btn-primary text-center">
-          Get in touch
+        <a href="/logs" class="btn btn-primary text-center">
+          Read the Logs
         </a>
-        <a href="/resume.pdf" target="_blank" class="btn btn-secondary text-center">
-          Download Resume
+        <a href="/blog" class="btn btn-secondary text-center">
+          Read Essays
         </a>
       </div>
     </div>
