@@ -5,6 +5,8 @@ date: 2024-01-15
 tags: ["python", "automation", "data"]
 featured: true
 link: "https://github.com/victorem/example"
+status: "Completed"
+learning: "Automating data pipelines is 80% error handling and 20% actual data movement."
 ---
 
 ## Overview

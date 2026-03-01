@@ -10,6 +10,8 @@ const work = defineCollection({
     image: z.string().optional(),
     featured: z.boolean().default(false),
     link: z.string().url().optional(),
+    status: z.enum(['Active', 'Paused', 'Completed']).default('Completed'),
+    learning: z.string().optional(),
   }),
 });
 

@@ -4,6 +4,8 @@ description: "Description of another project showcasing different skills."
 date: 2024-02-20
 tags: ["typescript", "react", "web"]
 featured: true
+status: "Active"
+learning: "State management is often a proxy for poorly defined data models."
 ---
 
 ## About This Project

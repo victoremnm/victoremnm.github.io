@@ -2,62 +2,64 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const allWork = (await getCollection('work'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = (await getCollection('work')).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const title = 'Project Dashboard';
+const description = 'A scan of active and completed engineering projects.';
 ---
 
-<BaseLayout title="Work" description="A collection of projects and work">
-  <div class="mx-auto max-w-4xl px-6 py-16 gxsc-reveal">
-    <h1 class="text-4xl font-semibold text-[var(--color-text-primary)] mb-4 font-display">Work</h1>
-    <p class="text-xl text-[var(--color-text-secondary)] mb-12 gxsc-reveal gxsc-delay-1">
-      A selection of projects I've worked on. From side projects to professional work.
-    </p>
+<BaseLayout title={title} description={description}>
+	<div class="space-y-12">
+		<header class="space-y-4">
+			<h1 class="text-4xl font-bold tracking-tight text-primary">{title}</h1>
+			<p class="text-lg text-muted max-w-2xl">{description}</p>
+		</header>
 
-    {allWork.length > 0 ? (
-      <div class="grid gap-6 md:grid-cols-2 gxsc-reveal gxsc-delay-2">
-        {allWork.map((project) => (
-          <a
-            href={`/work/${project.slug}`}
-            class="group card card-accent block p-6 transition-all"
-          >
-            {project.data.image && (
-              <img
-                src={project.data.image}
-                alt={project.data.title}
-                class="w-full h-40 object-cover rounded-[10px] mb-4 border border-[var(--color-border)]"
-              />
-            )}
-            <div class="flex items-center gap-2 mb-2">
-              {project.data.featured && (
-                <span class="px-2 py-0.5 bg-[var(--color-bg-primary)] text-[var(--color-accent)] rounded-full text-xs font-medium border border-[var(--color-border)]">
-                  Featured
-                </span>
-              )}
-              <time class="text-sm text-[var(--color-text-muted)]">
-                {project.data.date.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                })}
-              </time>
-            </div>
-            <h2 class="font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-              {project.data.title}
-            </h2>
-            <p class="mt-2 text-[var(--color-text-secondary)] text-sm">
-              {project.data.description}
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              {project.data.tags.slice(0, 4).map((tag) => (
-                <span class="px-2 py-1 bg-[var(--color-bg-primary)] text-[var(--color-text-muted)] rounded-full text-xs border border-[var(--color-border)]">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </a>
-        ))}
-      </div>
-    ) : (
-      <p class="text-[var(--color-text-muted)]">No projects yet. Check back soon!</p>
-    )}
-  </div>
+		<div class="grid gap-8">
+			{projects.map((project) => (
+				<div class="group relative flex flex-col items-start p-6 rounded-2xl border border-border bg-card hover:border-accent transition-all">
+					<div class="flex items-center gap-3 mb-2">
+						<span class:list={[
+							'px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider',
+							project.data.status === 'Active' ? 'bg-accent/10 text-accent border border-accent/20' : 
+							project.data.status === 'Paused' ? 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20' :
+							'bg-muted/10 text-muted border border-muted/20'
+						]}>
+							{project.data.status}
+						</span>
+						<span class="text-xs font-mono text-muted">
+							{project.data.date.getFullYear()}
+						</span>
+					</div>
+					
+					<h2 class="text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+						<a href={`/work/${project.slug}`}>
+							{project.data.title}
+						</a>
+					</h2>
+					
+					<p class="text-secondary text-sm leading-relaxed mb-4">
+						{project.data.description}
+					</p>
+					
+					{project.data.learning && (
+						<div class="mt-auto w-full p-3 rounded-lg bg-primary/5 border border-border/50">
+							<span class="text-[10px] font-bold uppercase tracking-widest text-muted block mb-1">Lesson Learned</span>
+							<p class="text-xs italic text-primary/80">
+								"{project.data.learning}"
+							</p>
+						</div>
+					)}
+					
+					<div class="mt-4 flex flex-wrap gap-2">
+						{project.data.tags.map(tag => (
+							<span class="text-[10px] font-mono text-muted bg-muted/5 px-1.5 py-0.5 rounded">#{tag}</span>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
 </BaseLayout>
