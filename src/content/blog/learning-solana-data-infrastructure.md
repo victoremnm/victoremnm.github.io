@@ -31,13 +31,13 @@ The thing that tripped me up: **on-chain data is dense and ambiguous without con
 
 In traditional data work, you usually start with a well-labeled source (Kafka topic with typed events, CDC stream from a typed table). Solana's raw transaction stream is more like getting the bytes off a wire and having to figure out the envelope format yourself.
 
-The practical solution for our pipeline was to rely on specialized indexers (Helius, Shyft) for the parsing layer rather than doing raw transaction deserialization ourselves. This abstraction trades flexibility for sanity. We still do some custom parsing for specific program interactions, but anchoring on indexed, pre-parsed data for the common cases saved months.
+The practical solution for our pipeline was to rely on specialized third-party indexers for the parsing layer rather than doing raw transaction deserialization ourselves. This abstraction trades flexibility for sanity. We still do some custom parsing for specific program interactions, but anchoring on indexed, pre-parsed data for the common cases saved months.
 
 ## RocksDB and the State Machine
 
 Our platform uses a Rust-based block processor that maintains a local state store using RocksDB — an embedded key-value database. Understanding this took me longer than it should have.
 
-The pattern is: instead of querying an external database on every transaction, the processor maintains a local cache of relevant state (token balances, holder positions, price history). As blocks are processed, the state machine updates the local store and publishes change events to NATS.
+The pattern is: instead of querying an external database on every transaction, the processor maintains a local cache of relevant state (token balances, holder positions, price history). As blocks are processed, the state machine updates the local store and publishes change events to a pub/sub message bus.
 
 This is a well-established pattern (Kafka Streams does something similar with RocksDB-backed state stores), but coming from a world where state always lives in a central database, the mental model took adjustment.
 
@@ -47,7 +47,7 @@ The key insight: **the local state store is not the system of record.** It's a r
 
 One thing that *did* transfer cleanly: once data lands in ClickHouse, it's just data engineering. Materialized views, aggregating merge trees, dimensional modeling — all the same. The Solana-specific complexity lives at the ingestion layer.
 
-The pipeline we built: Solana RPC / Indexer → Block Processor (Rust) → NATS → Enrichment Service → ClickHouse. Everything after NATS is standard streaming data engineering. The Solana-specific knowledge is concentrated in the block processor and the enrichment layer.
+The pipeline we built: Solana RPC / Indexer → Block Processor (Rust) → pub/sub bus → Enrichment Service → ClickHouse. Everything after NATS is standard streaming data engineering. The Solana-specific knowledge is concentrated in the block processor and the enrichment layer.
 
 If you're coming from a traditional data background and joining a Solana team, I'd suggest front-loading your time on:
 1. The SPL token program — most DeFi data flows through it

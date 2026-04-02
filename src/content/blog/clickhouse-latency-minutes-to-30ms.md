@@ -71,7 +71,7 @@ The key design decision was choosing `ReplacingMergeTree` with a version column 
 
 Raw trades don't have holder context when they land. We added an enrichment step in the streaming processor that:
 
-1. Reads the trade event from NATS
+1. Reads the trade event from a pub/sub message bus
 2. Looks up current holder state from a local cache (Redis-backed)
 3. Writes the enriched trade (with holder context, rank, position size) to ClickHouse
 
@@ -97,4 +97,4 @@ After rolling out:
 
 **Separate hot and cold aggregations.** Some queries (live price, current holders) need sub-10ms. Others (historical holder distribution, 30d volume trend) can tolerate seconds. Treating them the same in the schema is wasteful — the hot queries need in-memory-accessible materialized state; the cold ones can afford a background merge.
 
-The full pipeline (Postgres → NATS → enrichment → ClickHouse → materialized views) now runs with consistent sub-30ms p99 on analytics queries. The architecture is less clever than I initially planned — which is exactly right.
+The full pipeline (Postgres → pub/sub bus → enrichment → ClickHouse → materialized views) now runs with consistent sub-30ms p99 on analytics queries. The architecture is less clever than I initially planned — which is exactly right.
