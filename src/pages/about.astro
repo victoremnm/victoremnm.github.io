@@ -2,40 +2,95 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Philosophy" description="Why I log my technical work publicly.">
+<BaseLayout title="About" description="Victor Em — Engineering Manager, data infrastructure, Stanford.">
   <div class="mx-auto max-w-[900px] px-6 py-16 gxsc-reveal">
-    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-8 font-display">Philosophy</h1>
+    <h1 class="text-3xl font-light tracking-tight text-[var(--color-text-primary)] mb-8 font-display">About</h1>
 
     <div class="space-y-12 gxsc-reveal gxsc-delay-1">
-      <p class="text-xl text-[var(--color-text-secondary)] leading-relaxed">
-        This is not a traditional portfolio. This is a <strong>Technical Workshop</strong>.
-      </p>
 
       <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
-        <h2 class="section-header">The Goal</h2>
-        <p>
-          As an engineer and manager, I believe the most valuable asset is not the code you've written, but the <strong>process</strong> you've developed. 
-          I use this site to publicly document my daily "Ships" and "Learnings."
-        </p>
-        <p>
-          By logging my technical journey in real-time, I create a searchable archive for myself and a transparent record of my technical growth for others.
+        <p class="text-xl text-[var(--color-text-secondary)] leading-relaxed">
+          I'm Victor Em — Engineering Manager for Data Infrastructure at a real-time crypto trading startup in Mountain View, CA.
+          I manage a team of seven engineers and stay hands-on with system design, code reviews, and production incident response.
         </p>
       </section>
 
       <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
-        <h2 class="section-header">What You'll Find Here</h2>
-        <ul class="list-disc pl-5 space-y-2">
-          <li><strong>Logs:</strong> Raw, daily updates on what I built and what I learned.</li>
-          <li><strong>Essays:</strong> Long-form reflections on systems, management, and philosophy.</li>
-          <li><strong>Wiki:</strong> A collection of resources, frameworks, and technical guides.</li>
-          <li><strong>Work:</strong> A dashboard of current and past engineering projects.</li>
+        <h2 class="section-header">Background</h2>
+        <p>
+          I studied at Stanford (B.S. + M.S., GPA 3.66/3.78) and have spent the last decade at the intersection of data engineering and platform infrastructure.
+        </p>
+        <div class="space-y-3 pt-2">
+          <div class="grid grid-cols-[160px_1fr] gap-4">
+            <span class="font-mono text-sm text-[var(--color-text-muted)]">2025 – Now</span>
+            <span>Engineering Manager, Data Infrastructure — Stealth Crypto Startup</span>
+          </div>
+          <div class="grid grid-cols-[160px_1fr] gap-4">
+            <span class="font-mono text-sm text-[var(--color-text-muted)]">2023 – 2025</span>
+            <span>Staff Engineer, ML & Data Platform — SiriusXM</span>
+          </div>
+          <div class="grid grid-cols-[160px_1fr] gap-4">
+            <span class="font-mono text-sm text-[var(--color-text-muted)]">2022 – 2023</span>
+            <span>Senior Data Engineer — Meta</span>
+          </div>
+          <div class="grid grid-cols-[160px_1fr] gap-4">
+            <span class="font-mono text-sm text-[var(--color-text-muted)]">2019 – 2022</span>
+            <span>Data Engineering Lead — Disney Streaming Services</span>
+          </div>
+          <div class="grid grid-cols-[160px_1fr] gap-4">
+            <span class="font-mono text-sm text-[var(--color-text-muted)]">2016 – 2019</span>
+            <span>Senior Data Analyst / Data Scientist — Foursquare</span>
+          </div>
+        </div>
+        <p class="pt-2">
+          My technical depth is in real-time data infrastructure: ClickHouse, NATS streaming, DBT, Postgres CDC pipelines, dimensional modeling.
+          I've also done significant work in ML platform infrastructure (Databricks, AWS, IaC) and privacy/compliance data systems at Meta.
+        </p>
+      </section>
+
+      <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+        <h2 class="section-header">What I'm Working On Now</h2>
+        <p>
+          Right now I'm heads-down building real-time data infrastructure for a crypto trading platform —
+          ClickHouse + NATS + Postgres CDC processing 400+ trades per second, with materialized aggregations
+          serving a live web terminal and Telegram trading app. The interesting problems are at the intersection
+          of streaming latency, Solana's account model, and keeping a team of seven moving fast without accumulating debt.
+        </p>
+        <p>
+          I also automate as much of my own workflow as possible: session logging, PR review pipelines,
+          team status reporting via Claude Code and GitHub Actions. Meta-tooling is something I think about a lot.
+        </p>
+      </section>
+
+      <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+        <h2 class="section-header">This Site</h2>
+        <p>
+          This is a <strong>Technical Workshop</strong> — a living archive of engineering work, system designs, and weekly learnings.
+          It's public partly for accountability, partly because I find other engineers' logs useful and want to contribute to that.
+        </p>
+        <ul class="list-disc pl-5 space-y-2 pt-2">
+          <li><strong>Logs:</strong> Weekly digests of what I shipped and what I learned.</li>
+          <li><strong>Essays:</strong> Long-form posts on systems, management, and technical decisions.</li>
+          <li><strong>Resources:</strong> Frameworks and guides I've built up over the years.</li>
         </ul>
       </section>
 
       <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
-        <h2 class="section-header">Professional Background</h2>
+        <h2 class="section-header">Outside Work</h2>
         <p>
-          If you are looking for my resume, official bio, or professional contact info, please visit my primary landing page:
+          I'm President of the Board of Trustees at the <a href="https://www.lfe.foundation/" class="text-[var(--color-accent)] hover:underline">Lambda Phi Epsilon Foundation</a>,
+          a 501(c)3 providing need-based and merit-based scholarships to students across 60+ universities.
+          We've raised $200K+ in alumni donations since launch. I also built the donation pipeline (PayPal/Stripe → Salesforce → QuickBooks via Zapier).
+        </p>
+        <p>
+          I play Magic: The Gathering at a competitive level (cEDH format) and occasionally build analytics tooling for tournament data.
+        </p>
+      </section>
+
+      <section class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+        <h2 class="section-header">Professional Contact</h2>
+        <p>
+          For my resume, official bio, or professional inquiries:
         </p>
         <a href="https://victorem.me" class="inline-block text-[var(--color-accent)] font-medium hover:underline">victorem.me →</a>
       </section>

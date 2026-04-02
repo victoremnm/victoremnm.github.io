@@ -3,7 +3,7 @@ title: "Dimensional Modeling Fundamentals: Facts, Dimensions, and Snapshots"
 description: "Core concepts from Kimball's Dimensional Warehouse Toolkit - star schemas, fact table types, and the enterprise bus architecture."
 date: 2020-05-01
 tags: ["data-engineering", "dimensional-modeling", "kimball", "data-warehouse"]
-draft: true
+draft: false
 ---
 
 Ralph Kimball's *Dimensional Data Warehouse Toolkit* remains the definitive guide to building analytics-ready data warehouses. Here are the core concepts every data engineer should internalize.
