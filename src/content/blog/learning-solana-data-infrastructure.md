@@ -47,7 +47,7 @@ The key insight: **the local state store is not the system of record.** It's a r
 
 One thing that *did* transfer cleanly: once data lands in ClickHouse, it's just data engineering. Materialized views, aggregating merge trees, dimensional modeling — all the same. The Solana-specific complexity lives at the ingestion layer.
 
-The pipeline we built: Solana RPC / Indexer → Block Processor (Rust) → pub/sub bus → Enrichment Service → ClickHouse. Everything after NATS is standard streaming data engineering. The Solana-specific knowledge is concentrated in the block processor and the enrichment layer.
+The pipeline we built: Solana RPC / Indexer → Block Processor (Rust) → pub/sub bus → Enrichment Service → ClickHouse. Everything after the pub/sub bus is standard streaming data engineering. The Solana-specific knowledge is concentrated in the block processor and the enrichment layer.
 
 If you're coming from a traditional data background and joining a Solana team, I'd suggest front-loading your time on:
 1. The SPL token program — most DeFi data flows through it
