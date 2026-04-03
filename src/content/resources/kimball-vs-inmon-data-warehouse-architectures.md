@@ -3,7 +3,7 @@ title: "Kimball vs Inmon: Choosing a Data Warehouse Architecture"
 description: "A practical comparison of Bill Inmon's top-down enterprise approach versus Ralph Kimball's bottom-up dimensional modeling for building data warehouses."
 date: 2020-06-23
 tags: ["data-engineering", "data-warehouse", "architecture", "kimball", "inmon"]
-draft: true
+draft: false
 ---
 
 When building a data warehouse, two dominant philosophies emerge: Bill Inmon's top-down enterprise approach and Ralph Kimball's bottom-up dimensional modeling. Understanding when to use each can save your organization significant time and resources.
