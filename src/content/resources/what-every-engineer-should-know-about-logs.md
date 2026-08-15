@@ -8,7 +8,7 @@ draft: true
 
 LinkedIn's engineering blog has a seminal piece that every data engineer should read: *"The Log: What every software engineer should know about real-time data's unifying abstraction."*
 
-The core insight is deceptively simple but has profound implications for how you architect data systems.
+The core insight is deceptively simple, and it changes how you architect data systems.
 
 ## The Log as Unifying Abstraction
 
