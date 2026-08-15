@@ -26,17 +26,6 @@ build:
 preview PORT="4321":
 	npm run preview -- --host 127.0.0.1 --port {{PORT}}
 
-# Deploy to Cloudflare Workers (static assets)
-# Requires CLOUDFLARE_API_TOKEN to be set
-
-deploy:
-	@if [ -z "$$CLOUDFLARE_API_TOKEN" ]; then \
-		echo "CLOUDFLARE_API_TOKEN is not set"; \
-		exit 1; \
-	fi
-	npm run build
-	npx wrangler deploy
-
 # Run a quick content check for common issues
 check:
 	@rg "draft: true" src/content/blog || true
