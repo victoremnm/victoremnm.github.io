@@ -16,12 +16,12 @@ A structured approach to answering metrics questions in data engineering intervi
 
 1. **Clarify the Question**: Rephrase it even if it sounds obvious to ensure alignment.
 2. **Pause & Think**: Jot down initial thoughts to structure your response.
-3. **Feature & Product Context**: Explain how the feature relates to the product and how the product aligns with the overall mission.
+3. **Feature & Product Context**: Explain how the feature relates to the product and how the product fits the overall mission.
 4. **User Impact Analysis**: Identify the user personas impacted and potential segmentations (e.g., new vs. returning users, mobile vs. web, creators vs. viewers).
 5. **Metrics Categorization**: List relevant metrics and classify them into:
    - **Leading Indicators**: Short-term behavioral signals predicting success.
    - **Lagging (Trailing) Indicators**: Long-term validation of the impact.
-   - **Countermetrics**: Guardrails ensuring no unintended negative effects.
+   - **Countermetrics**: Guardrails against unintended negative effects.
 6. **North Star Metric (NSM) Selection**: The guiding metric should:
    - Be directly influenceable by the product/company.
    - Impact all key user personas.

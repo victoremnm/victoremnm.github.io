@@ -14,11 +14,11 @@ While OLAP cube technology continues improving, Kimball recommends:
 
 > **Load detailed, atomic information into a star schema first; optional OLAP cubes are then populated from the star schema.**
 
-This gives you flexibility - the star schema serves as your foundation, and OLAP cubes become a performance optimization layer.
+This gives you flexibility: the star schema is your foundation, and OLAP cubes become a performance optimization layer.
 
 ## The Three Fact Table Types
 
-Not all facts are created equal. Understanding which type to use is crucial.
+Not all facts are created equal, and picking the wrong type breaks your aggregations.
 
 ### 1. Transaction Facts
 

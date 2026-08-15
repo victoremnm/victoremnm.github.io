@@ -6,9 +6,9 @@ tags: ["reflection", "productivity", "engineering", "post-mortem"]
 draft: false
 ---
 
-In software engineering, we often learn more from our abandoned projects than our successful ones. "Chief of Staff" was my attempt to build the ultimate personal productivity operating system—a CLI tool to manage my time, tasks, and context.
+"Chief of Staff" was my attempt to build the ultimate personal productivity operating system — a CLI tool to manage my time, tasks, and context.
 
-It failed. But it led me to a better approach: **The Technical Log**.
+It failed, but it led me to a better approach: the Technical Log.
 
 ## The Vision
 The original idea for `chief-of-staff` was ambitious. I wanted a tool that would:
@@ -31,16 +31,16 @@ The tool required manual input that interrupted my flow. If a productivity tool 
 
 ## The Pivot: From "Manager" to "Logger"
 
-Reflecting on this, I realized that what I actually needed wasn't a "Chief of Staff" to boss me around. I needed a **Log** to remember where I'd been.
+Reflecting on this, I realized I didn't need a "Chief of Staff" to boss me around — I needed a log to remember where I'd been.
 
-I looked at how engineers like [Lilian Weng](https://lilianweng.github.io/) and [Andrej Karpathy](https://karpathy.github.io/) operate. They don't have complex productivity dashboards (publicly, at least). They have **archives**. They treat their work as a stream of technical outputs.
+I looked at how engineers like [Lilian Weng](https://lilianweng.github.io/) and [Andrej Karpathy](https://karpathy.github.io/) operate. They don't have complex productivity dashboards, at least not publicly. They have archives — their work as a stream of technical outputs.
 
 ## The New Architecture
 
-I am officially deprecating `chief-of-staff` as a standalone product and rebirthing it as a **philosophy** embedded in this website.
+I am officially deprecating `chief-of-staff` as a standalone product and rebirthing it as a philosophy embedded in this website.
 
 1.  **This Site is the OS:** My `victoremnm.github.io` repo is now my living workspace.
 2.  **The "Log" is the Feature:** Instead of a complex app, I'm building a simple script to append daily updates to a markdown file.
 3.  **Public by Default:** By logging my technical growth publicly, I create accountability and a knowledge base that scales with me.
 
-The "Chief of Staff" is dead. Long live the **Technical Log**.
+The "Chief of Staff" is dead. Long live the Technical Log.

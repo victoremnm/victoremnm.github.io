@@ -6,7 +6,7 @@ tags: ["data-engineering", "data-warehouse", "architecture", "kimball", "inmon"]
 draft: false
 ---
 
-When building a data warehouse, two dominant philosophies emerge: Bill Inmon's top-down enterprise approach and Ralph Kimball's bottom-up dimensional modeling. Understanding when to use each can save your organization significant time and resources.
+When building a data warehouse, two dominant philosophies emerge: Bill Inmon's top-down enterprise approach and Ralph Kimball's bottom-up dimensional modeling. Picking the wrong one costs months of rework.
 
 ## The Two Philosophies
 
@@ -45,7 +45,7 @@ Kimball recommends starting with **mission-critical data marts** that serve imme
 
 ## My Experience
 
-Working at Disney Streaming, we saw this tension play out. Marketing, DPA, and EPA functioned as semi-decentralized data marts (Kimball-style), but this led to challenges when we needed enterprise-wide consistency for subscription data across Disney+, ESPN+, and Hulu.
+Working at Disney Streaming, we saw this tension play out. Marketing, DPA, and EPA were semi-decentralized data marts (Kimball-style), but this caused problems when we needed enterprise-wide consistency for subscription data across Disney+, ESPN+, and Hulu.
 
 The lesson: hybrid approaches often work best. Start with Kimball for speed, but plan for eventual integration.
 
