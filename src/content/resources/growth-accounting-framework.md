@@ -14,11 +14,11 @@ A practical approach to tracking user lifecycle states and measuring product gro
 
 ## Why Growth Accounting Matters
 
-We can effectively monitor user behavior by defining clear user states and establishing explicit conditions for transitions between them. Implementing a structured data model that captures these states and transitions enables:
+Defining clear user states, and explicit conditions for moving between them, lets you build a data model that supports:
 
-- Analysis of user engagement patterns
-- Identification of potential churn risks
-- Formulation of targeted re-engagement strategies
+- Analyzing engagement patterns
+- Spotting churn risk early
+- Targeting re-engagement campaigns
 - Consistent segmentation across time periods (daily L1D, weekly L7D, monthly L30D)
 
 ```mermaid
@@ -51,8 +51,8 @@ flowchart TB
 
 | Approach | Pros | Cons |
 |----------|------|------|
-| **Granular** (New, Active, At-Risk, Churned, Reactivated) | More detailed insights into engagement trends. Allows refined segmentation and personalized re-engagement. | Complex to implement, maintain, and keep MECE. May fragment states unnecessarily. |
-| **Simplified** (New, Retained, Churned, Resurrected, Dormant) | Easier to implement, aligns with established frameworks. Provides high-level, actionable view of growth dynamics. | Lacks nuance (no "At-Risk" state). Limited proactive churn mitigation. |
+| **Granular** (New, Active, At-Risk, Churned, Reactivated) | Shows more of the engagement trend. Supports finer segmentation and targeted re-engagement. | Complex to implement, maintain, and keep MECE. May fragment states unnecessarily. |
+| **Simplified** (New, Retained, Churned, Resurrected, Dormant) | Easier to implement, matches established frameworks. Gives a high-level view of growth. | No "At-Risk" state, so less room for proactive churn mitigation. |
 
 **Recommendation:** Start with simplified growth accounting, then evolve to granular when needed. You can flexibly change what constitutes "present" and "past" time periods.
 
@@ -134,7 +134,7 @@ Quick Ratio = (New(t) + Resurrected(t)) / Churned(t)
 
 ## Data Modeling Approach
 
-The common pattern is a **cumulative/snapshot table** containing state transitions between today's and yesterday's data. This stochastic process enables snapshot queries by partition date.
+The common pattern is a **cumulative/snapshot table** containing state transitions between today's and yesterday's data. You can query any day's snapshot by partition date.
 
 ### Benefits
 

@@ -6,7 +6,7 @@ tags: ["data-engineering", "product", "frameworks", "analytics", "business"]
 draft: true
 ---
 
-As a data engineer, understanding product and business frameworks makes you significantly more effective. You'll build better metrics, ask better questions, and deliver more impactful analysis.
+As a data engineer, understanding product and business frameworks changes the metrics you build and the questions you ask.
 
 ## Goal Setting: AARRR (Pirate Metrics)
 
@@ -157,4 +157,4 @@ Understanding these frameworks helps you:
 
 ---
 
-*Build data infrastructure that answers business questions, not just technical ones.*
+*Build data infrastructure that answers business questions.*

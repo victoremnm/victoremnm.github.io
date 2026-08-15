@@ -64,7 +64,7 @@ The core building blocks:
 - Contain **measurements/metrics** (quantities, amounts, counts)
 - Have **foreign keys** to dimension tables
 - Are typically **append-only** (events don't change)
-- Granularity is crucial - one row = one event/transaction
+- Granularity matters - one row = one event/transaction
 
 **Example: Sales Fact**
 ```sql
